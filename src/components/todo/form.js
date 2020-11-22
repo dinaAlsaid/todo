@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 
 function TodoForm(props) {
   const [item, setItem] = useState({});
@@ -21,28 +22,28 @@ function TodoForm(props) {
   return (
     <>
       <Card>
-      <Card.Header as="h4">Add Item</Card.Header>
-      <Card.Body>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>To Do Item</span>
-          <input
-            name="text"
-            placeholder="Add To Do List Item"
-            onChange={handleInputChange}
-          />
-        </label>
-        <label>
-          <span>Difficulty Rating</span>
-          <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={handleInputChange} />
-        </label>
-        <label>
-          <span>Assigned To</span>
-          <input type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
-        </label>
-        <Button variant="primary" type="submit">Add Item</Button>
-      </form>
-      </Card.Body>
+        <Card.Header as="h4">Add Item</Card.Header>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label><span>To Do Item</span></Form.Label>
+              <Form.Control type="text" name="text" placeholder="Add To Do List Item" onChange={handleInputChange} />
+
+              <Form.Label><span>Difficulty Rating</span></Form.Label>
+              <Form.Control type="range" defaultValue="1" min="1" max="5" name="difficulty" onChange={handleInputChange}/>
+            
+              <Form.Label><span>Assigned To</span></Form.Label>
+              <Form.Control
+                type="text"
+                name="assignee"
+                placeholder="Assigned To"
+                onChange={handleInputChange}
+              />
+
+              <Button variant="primary" type="submit">Add Item</Button>
+            </Form.Group>
+          </Form>
+        </Card.Body>
 
       </Card>
     </>

@@ -6,7 +6,7 @@
 
 ### Links and Resources
 
-[deploymment on Netlify](https://resty-401d5.netlify.app/)
+[deploymment on Netlify](https://happy-sammet-ed55fc.netlify.app/)
 
 ### Setup
 

@@ -12,6 +12,7 @@ function ToDo() {
     item._id = Math.random();
     item.complete = false;
     setList([...list, item]);
+    console.log(list);
   };
 
   const toggleComplete = id => {

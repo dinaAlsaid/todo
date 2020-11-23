@@ -7,11 +7,14 @@ function TodoList(props) {
     <ListGroup as="ul">
       {props.list.map(item => (
         <ListGroup.Item as="li" 
-          className={`complete-${item.complete.toString()}`}
-          key={item._id}
-          action onClick={() => props.handleComplete(item._id)}
-        >
-            {item.text}
+        className={`complete-${item.complete.toString()}`}
+        key={item._id} 
+        > 
+        <span onClick={() => props.handleComplete(item._id)}>
+        {item.assignee}: 
+        {item.text}
+        </span>
+        <p  onClick={()=>props.handleDelete(item._id)}>X</p>
         </ListGroup.Item>
 
       ))}

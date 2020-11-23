@@ -20,5 +20,4 @@
 
 #### UML
 
-![UML](./src/assets/lab31.png)
-
+![UML](./src/assets/lab32.png)

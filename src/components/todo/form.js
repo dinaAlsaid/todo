@@ -6,7 +6,7 @@ import useFormHandler from '../../hooks/form.js';
 
 function TodoForm(props) {
 
-  const [item, handleInputChange, handleSubmit] = useFormHandler(props.handleSubmit);
+  const [handleInputChange, handleSubmit] = useFormHandler(props.handleSubmit);
 
 
   return (

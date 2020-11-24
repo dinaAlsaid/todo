@@ -1,24 +1,32 @@
 import React from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Toast from 'react-bootstrap/Toast';
 
 function TodoList(props) {
 
   return (
-    <ListGroup as="ul">
+    <>
       {props.list.map(item => (
-        <ListGroup.Item as="li" 
-        className={`complete-${item.complete.toString()}`}
-        key={item._id} 
-        > 
-        <span onClick={() => props.handleComplete(item._id)}>
-        {item.assignee}: 
-        {item.text}
-        </span>
-        <p  onClick={()=>props.handleDelete(item._id)}>X</p>
-        </ListGroup.Item>
 
+        <Toast onClose={() => props.handleDelete(item._id)}
+          key={item._id}
+        >
+          <Toast.Header>
+            <strong className={`mr-auto complete-${item.complete.toString()}`}>
+                {item.complete?'done':'to do'}
+            </strong>
+            
+            <small>{item.assignee}</small>
+          </Toast.Header>
+
+          <Toast.Body
+            onClick={() => props.handleComplete(item._id)}
+            className={`complete-${item.complete.toString()}`}
+          >
+            <span >{item.text}</span>
+          </Toast.Body>
+        </Toast>
       ))}
-    </ListGroup>
+    </>
   );
 }
 

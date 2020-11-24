@@ -14,7 +14,7 @@ const useFormHandler = (cb)=>{
     const newItem = {};
     setItem(newItem);
   };
-  return[item, handleInputChange , handleSubmit];
+  return[handleInputChange , handleSubmit];
 }
 
 export default useFormHandler;

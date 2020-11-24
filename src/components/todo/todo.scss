@@ -54,23 +54,35 @@ body, html {
             flex-direction:row;
             font-size: .75em;
             
+            p{
+                padding: 3px;
+                cursor:pointer;
+                &:hover{
+                    color: grey;;
+                }
+            }
             &.complete-true {
                 
                 background: pink;
                 text-decoration:line-through;
+                span{
+                    border: none;
+                    background-color: transparent;
+                }
                 
             }
             &.complete-false {
                 background: rgb(130, 228, 172);
-                
+                span{
+                    border: none;
+                    background-color: transparent;
+                }
+
             }
             
             span {
                 background: #e0e0e0;
                 cursor:pointer;
-                &:hover {
-                    background: pink;
-                }
             }
             span, input {
                 border: .5px solid #eee;

@@ -21,8 +21,29 @@ body, html {
     }
 
 }
+.float{
+    float: right;
+    margin: 2em;
 
+}
 .todo {
+
+    
+    .complete-true {
+                
+        color: pink;
+
+        span{
+            text-decoration:line-through;
+            
+        }
+        
+    }
+    .complete-false {
+        color: rgb(130, 228, 172);
+
+    }
+
 
     display:flex;
     flex-direction:row;
@@ -40,6 +61,10 @@ body, html {
             flex-direction:column;
             margin-bottom: 1em;
         }
+    }
+    div{
+        margin: 0.5em;
+
     }
     
     ul {
@@ -60,24 +85,6 @@ body, html {
                 &:hover{
                     color: grey;;
                 }
-            }
-            &.complete-true {
-                
-                background: pink;
-                text-decoration:line-through;
-                span{
-                    border: none;
-                    background-color: transparent;
-                }
-                
-            }
-            &.complete-false {
-                background: rgb(130, 228, 172);
-                span{
-                    border: none;
-                    background-color: transparent;
-                }
-
             }
             
             span {

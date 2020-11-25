@@ -22,7 +22,7 @@ function TodoList(props) {
             className={`complete-${item.complete.toString()}`}
           >
             <span >{item.text}</span>
-            <small className='float'>{item.difficulty}</small>
+            <small className='float'>Difficulty: {item.difficulty}</small>
           </Toast.Body>
         </Toast>
       ))}

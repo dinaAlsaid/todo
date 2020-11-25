@@ -18,7 +18,6 @@ const ToDo = () => {
   const [newList, _addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax(todoAPI);
   const contextSettings = useContext(SettingsContext);
   const contextPages =  useContext(PagesContext)
-  // const [filteredItems,filterList]=usePages(active,newList);
 
 
   useEffect(() => {

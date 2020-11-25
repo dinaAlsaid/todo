@@ -14,7 +14,6 @@ function TodoList(props) {
             <strong className={`mr-auto complete-${item.complete.toString()}`}>
                 {item.complete?'done':'to do'}
             </strong>
-            
             <small>{item.assignee}</small>
           </Toast.Header>
 

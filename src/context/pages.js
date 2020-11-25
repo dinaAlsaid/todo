@@ -7,7 +7,8 @@ function PagesProvider(props) {
   const context = useContext(SettingsContext)
 
   const [active, setActive] = useState(1);
-
+  // const [updatedList,setUpdated] = useState([]);
+  // make sure it rerenders we have to set the new filtered list when settings change
   const filterListItems = (list) => {
     list = list.filter((item, index) => {
       if (!context.showCompleted) {

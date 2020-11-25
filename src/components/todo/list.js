@@ -12,7 +12,7 @@ function TodoList(props) {
         >
           <Toast.Header>
             <strong className={`mr-auto complete-${item.complete.toString()}`}>
-                {item.complete?'done':'to do'}
+              {item.complete ? 'done' : 'to do'}
             </strong>
             <small>{item.assignee}</small>
           </Toast.Header>
@@ -22,6 +22,7 @@ function TodoList(props) {
             className={`complete-${item.complete.toString()}`}
           >
             <span >{item.text}</span>
+            <small className='float'>{item.difficulty}</small>
           </Toast.Body>
         </Toast>
       ))}

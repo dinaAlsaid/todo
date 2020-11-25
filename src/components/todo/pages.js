@@ -4,8 +4,6 @@ import {PagesContext} from '../../context/pages.js'
 
 function Pages(props) {
   const context = useContext(PagesContext)
-  // const [active, setActive] = useState(1);
-  // const [filterItems]=usePages(active,props.items);
   
   let items = [];
   let listLength= props.items.length

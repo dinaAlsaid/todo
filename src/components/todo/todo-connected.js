@@ -1,56 +1,71 @@
-import React, { useEffect, useContext } from 'react';
-import TodoForm from './form.js';
-import TodoList from './list.js';
-import Pages from './pages.js';
-import Navbar from 'react-bootstrap/Navbar';
-import useAjax from '../../hooks/useAjax.js'
-import './todo.scss';
-import Settings from './settings.js'
-import { SettingsContext } from '../../context/settings.js';
-import {PagesContext} from '../../context/pages.js'
-import { Card } from 'react-bootstrap';
-
-const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
+import React, { useEffect, useContext,useState } from "react";
+import TodoForm from "./form.js";
+import TodoList from "./list.js";
+import Pages from "./pages.js";
+import useAjax from "../../hooks/useAjax.js";
+import "./todo.scss";
+import { SettingsContext } from "../../context/settings.js";
+import { Card, Col, Row } from "react-bootstrap";
+import compare from "../../Util/compare";
 
 
 const ToDo = () => {
-
-  const [newList, _addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax(todoAPI);
   const contextSettings = useContext(SettingsContext);
-  const contextPages =  useContext(PagesContext)
+  const [allTodoList,setAllTodoList]=useState([])
+  const [shownItems,setShownItems]= useState([]);
 
+  const [ _addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
+  
+  useEffect(() => {
+    let response =_getTodoItems();
+    setShownItems(response);
+    setAllTodoList(response)
+  }, []); //eslint-disable-line
+
+  useEffect(()=>{
+      let list = list.filter((item, index) => {
+        if (!contextSettings.showCompleted) {
+          return item;
+  
+        } else {
+          if (!item.complete) {
+            return item;
+          }
+        }
+      });
+      setShownItems(list)
+
+  },[contextSettings.showCompleted]);// eslint-disable-line
 
   useEffect(() => {
-    _getTodoItems()
-  }, []);
+    if (contextSettings.sorted === 'rating') {
+      let list = list.sort(compare)
+    }
+    setShownItems(list)
+
+}, [contextSettings.sorted]); //eslint-disable-line
 
   return (
     <>
-      <Navbar bg="primary" variant="dark">
-        <Navbar.Brand>TODO list</Navbar.Brand>
-      </Navbar>
-      <div>
-        <Settings />
-      </div>
-      <Card border="dark" style={{ margin: '0.5rem' }}>
-        <Card.Header as="h2">
-          There are {newList.filter(item => !item.complete).length} Items To Complete
-        </Card.Header>
-        <section className="todo">
-
-          <div>
+      <Card border="dark" style={{ margin: "0.5rem" }}>
+        <Card.Header as="h2">There are {response.filter((item) => !item.complete).length} Items To Complete</Card.Header>
+        
+        <Row>
+          <Col md={3}>
             <TodoForm handleSubmit={_addItem} />
-          </div>
+          </Col>
 
-          <div>
+          <Col md={2}>
             <TodoList
-              list={contextPages.filterForPages(contextPages.filterListItems(newList))}
+              list={shownItems}//contextPages.filterForPages(contextPages.filterCompletedItems(newList))
               handleComplete={_toggleComplete}
               handleDelete={_deleteItem}
             />
-          </div>
-        </section>
-        <Pages items={contextPages.filterListItems(newList)} perPage={contextSettings.numberOfItems} />
+          </Col>
+        </Row>
+
+        <Pages items={shownItems} perPage={contextSettings.numberOfItems} />
+      
       </Card>
     </>
   );

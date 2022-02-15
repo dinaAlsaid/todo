@@ -12,7 +12,6 @@ function TodoForm(props) {
   return (
     <>
       <Card>
-        <Card.Header as="h4">Add Item</Card.Header>
         <Card.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">

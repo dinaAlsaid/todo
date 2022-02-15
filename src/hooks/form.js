@@ -9,10 +9,9 @@ const useFormHandler = (cb)=>{
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    e.target.reset();
     cb(item);
-    const newItem = {};
-    setItem(newItem);
+    e.target.reset();
+    setItem({});
   };
   return[handleInputChange , handleSubmit];
 }

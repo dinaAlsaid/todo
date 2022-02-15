@@ -7,6 +7,7 @@ function SettingsProvider(props) {
   const [numberOfItems, setNumber] = useState(3);
   const [showCompleted, setShowCompleted] = useState(false);
   const [sorted, setSorted] = useState('rating');
+  
   const state = {
     numberOfItems,
     showCompleted,

@@ -20,7 +20,7 @@
 
 - `npm start`
 
-#### UML
+<!-- #### UML
 
 what is a UML??
 ![UML]()
@@ -29,4 +29,4 @@ what is a UML??
 
 does the login work? no  
 does the auth work? no  
-did i do the lab? also no  
+did i do the lab? also no   -->

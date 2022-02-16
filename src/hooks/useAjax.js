@@ -1,9 +1,7 @@
-import { useState } from "react";
 import axios from "axios";
 
 const useAjax = () => {
   const url = "https://api-js401.herokuapp.com/api/v1/todo";
-  const [response, setResponse] = useState([]);
 
   //GET
   const _getTodoItems = () => {
@@ -27,18 +25,17 @@ const useAjax = () => {
       headers: { "Content-Type": "application/json" },
       data: item,
     })
-      .then((savedItem) => savedItem)
+      .then((savedItem) => savedItem.data)
       .catch(console.error);
   };
 
   //PUT
-  const _toggleComplete = (id) => {
-    let item = list.filter((i) => i._id === id)[0] || {};
+  const _toggleComplete = (item) => {
 
     if (item._id) {
       item.complete = !item.complete;
 
-      let fullurl = `${url}/${id}`;
+      let fullurl = `${url}/${item._id}`;
 
       axios({
         url: fullurl,
@@ -49,18 +46,18 @@ const useAjax = () => {
         data: item,
       })
         .then((savedItem) => {
-          setResponse(list.map((listItem) => (listItem._id === item._id ? savedItem.data : listItem)));
+          return savedItem.data;
+          // setResponse(list.map((listItem) => (listItem._id === item._id ? savedItem.data : listItem)));
         })
         .catch(console.error);
     }
   };
 
   //DELETE
-  const _deleteItem = (id) => {
-    let item = list.filter((i) => i._id === id)[0] || {};
+  const _deleteItem = (item) => {
 
     if (item._id) {
-      let fullurl = `${url}/${id}`;
+      let fullurl = `${url}/${item._id}`;
 
       axios({
         url: fullurl,
@@ -71,12 +68,13 @@ const useAjax = () => {
         data: item,
       })
         .then(() => {
-          setResponse(list.filter((listItem) => listItem._id !== item._id));
+          return item
+          // setResponse(list.filter((listItem) => listItem._id !== item._id));
         })
         .catch(console.error);
     }
   };
-  return [response, _addItem, _getTodoItems, _toggleComplete, _deleteItem];
+  return [_addItem, _getTodoItems, _toggleComplete, _deleteItem];
 };
 
 export default useAjax;

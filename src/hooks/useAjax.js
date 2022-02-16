@@ -4,14 +4,19 @@ const useAjax = () => {
   const url = "https://api-js401.herokuapp.com/api/v1/todo";
 
   //GET
-  const _getTodoItems = () => {
-    axios({
-      url: url,
-      method: "get",
-      mode: "cors",
-    })
-      .then((data) => data.data.results)
-      .catch(console.error);
+  const _getTodoItems = async () => {
+    try {
+      let res = await axios({
+        url: url,
+        method: "get",
+        mode: "cors",
+      });
+      return res.data;
+    } catch (err) {
+      console.error(err.message);
+    }
+    // .then((data) => data.results)
+    // .catch(console.error);
   };
 
   // POST
@@ -31,7 +36,6 @@ const useAjax = () => {
 
   //PUT
   const _toggleComplete = (item) => {
-
     if (item._id) {
       item.complete = !item.complete;
 
@@ -55,7 +59,6 @@ const useAjax = () => {
 
   //DELETE
   const _deleteItem = (item) => {
-
     if (item._id) {
       let fullurl = `${url}/${item._id}`;
 
@@ -68,7 +71,7 @@ const useAjax = () => {
         data: item,
       })
         .then(() => {
-          return item
+          return item;
           // setResponse(list.filter((listItem) => listItem._id !== item._id));
         })
         .catch(console.error);

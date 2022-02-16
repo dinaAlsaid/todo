@@ -10,8 +10,9 @@ const useFormHandler = ()=>{
   const handleSubmit = (e,onSubmit) => {
     e.preventDefault();
     onSubmit(formData);
+    e.target.reset();
   };
-  
+
   return[handleInputChange , handleSubmit];
 }
 

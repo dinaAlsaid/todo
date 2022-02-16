@@ -16,14 +16,9 @@ const ToDo = () => {
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
 
   useEffect(() => {
-    let response = _getTodoItems();
-
-    if (response) {
-      setShownItems([...response]);
-      setAllTodoList([...response]);
-    }
+    getAllItems();
   }, []); //eslint-disable-line
-
+ 
   useEffect(() => {
     let list = shownItems.filter((item, index) => {
       if (!contextSettings.showCompleted) {
@@ -44,6 +39,16 @@ const ToDo = () => {
     }
   }, [contextSettings.sorted]); //eslint-disable-line
 
+  const getAllItems = async () => {
+    let response = await _getTodoItems();
+
+    if (response) {
+      setShownItems([...response.results]);
+      setAllTodoList([...response.results]);
+    }
+    
+  };
+  
   return (
     <>
       <Card border="dark" style={{ margin: "0.5rem" }}>

@@ -32,7 +32,9 @@ function Settings() {
           </Col>
           <Col>
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="No sort" value="None" />
-            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Rating" value="rating" />
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="desc" value="desc" />
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="asce" value="asce" />
+
           </Col>
         </Row>
       </Form>

@@ -49,17 +49,18 @@ const ToDo = () => {
     }
   };
 
-  const filterForPages = (arr) => {
-    return arr.filter((item, index) => {
-      // eslint-disable-line
+  // const filterForPages = (arr) => {
+  //   return arr.filter((item, index) => {
+  //     // eslint-disable-line
 
-      if (Math.ceil(index / contextSettings.numberOfItems) === activePage) {
-        return item;
-      }
-    });
-  };
+  //     if (Math.ceil(index / contextSettings.numberOfItems) === activePage) {
+  //       return item;
+  //     }
+  //   });
+  // };
 
   //api calls
+  
   const getAllItems = async () => {
     let response = await _getTodoItems();
 

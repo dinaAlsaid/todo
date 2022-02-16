@@ -18,9 +18,9 @@ const ToDo = () => {
   useEffect(() => {
     getAllItems();
   }, []); //eslint-disable-line
- 
+
   useEffect(() => {
-    let list = shownItems.filter((item, index) => {
+    let list = shownItems.filter((item) => {// eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -46,9 +46,22 @@ const ToDo = () => {
       setShownItems([...response.results]);
       setAllTodoList([...response.results]);
     }
-    
   };
-  
+
+  const addItem = async (item) => {
+    setShownItems([await _addItem(item), ...shownItems]);
+  };
+
+  const updateCompleted = async (item) => {
+    await _toggleComplete(item);
+    setShownItems(shownItems.map((listItem) => (listItem._id === item._id ? item : listItem)));
+  };
+
+  const deleteItem = async (item) => {
+    await _deleteItem(item);
+    setShownItems(shownItems.filter((listItem) => listItem._id !== item._id));
+  };
+
   return (
     <>
       <Card border="dark" style={{ margin: "0.5rem" }}>
@@ -58,15 +71,11 @@ const ToDo = () => {
 
         <Row>
           <Col md={3}>
-            <TodoForm handleSubmit={_addItem} />
+            <TodoForm handleSubmit={addItem} />
           </Col>
 
           <Col md={2}>
-            <TodoList
-              list={shownItems} //contextPages.filterForPages(contextPages.filterCompletedItems(newList))
-              handleComplete={_toggleComplete}
-              handleDelete={_deleteItem}
-            />
+            <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
           </Col>
         </Row>
 

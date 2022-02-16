@@ -15,14 +15,12 @@ const useAjax = () => {
     } catch (err) {
       console.error(err.message);
     }
-    // .then((data) => data.results)
-    // .catch(console.error);
   };
 
   // POST
   const _addItem = (item) => {
     item.due = new Date();
-    axios({
+    return axios({
       url: url,
       method: "post",
       mode: "cors",
@@ -41,7 +39,7 @@ const useAjax = () => {
 
       let fullurl = `${url}/${item._id}`;
 
-      axios({
+      return axios({
         url: fullurl,
         method: "put",
         mode: "cors",
@@ -49,10 +47,7 @@ const useAjax = () => {
         headers: { "Content-Type": "application/json" },
         data: item,
       })
-        .then((savedItem) => {
-          return savedItem.data;
-          // setResponse(list.map((listItem) => (listItem._id === item._id ? savedItem.data : listItem)));
-        })
+        .then((savedItem) => savedItem.data)
         .catch(console.error);
     }
   };
@@ -62,7 +57,7 @@ const useAjax = () => {
     if (item._id) {
       let fullurl = `${url}/${item._id}`;
 
-      axios({
+      return axios({
         url: fullurl,
         method: "delete",
         mode: "cors",
@@ -70,10 +65,7 @@ const useAjax = () => {
         headers: { "Content-Type": "application/json" },
         data: item,
       })
-        .then(() => {
-          return item;
-          // setResponse(list.filter((listItem) => listItem._id !== item._id));
-        })
+        .then((savedItem) => savedItem.data)
         .catch(console.error);
     }
   };

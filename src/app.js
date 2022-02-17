@@ -1,19 +1,15 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ToDo from './components/todo/todo-connected.js';
-import SettingsProvider from './context/settings.js';
-import PagesProvider from './context/pages.js';
-
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import LoginProvider from "./context/login.js";
+import SettingsProvider from "./context/settings.js";
+import Layout from "./components/todo/Layout.js";
 
 export default function App() {
   return (
-    <>
-    <SettingsProvider>
-      <PagesProvider>
-      <ToDo />
-      </PagesProvider>
-    </SettingsProvider>
-    </>
+      <LoginProvider>
+        <SettingsProvider>
+            <Layout />
+        </SettingsProvider>
+      </LoginProvider>
   );
-
 }

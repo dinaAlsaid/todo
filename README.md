@@ -1,5 +1,4 @@
-# LAB - Class 33
-
+# LAB - Class 34
 
 ## Project: todo
 
@@ -14,12 +13,20 @@
 #### `.env` requirements
 
 - `PORT` - 3000
+- `REACT_APP_API`=https://auth-server-401.herokuapp.com
+- `REACT_APP_SECRET`=notasecret
 
 #### How to initialize/run your application
 
 - `npm start`
 
-#### UML
+<!-- #### UML
 
-![UML](./src/assets/lab33.png)
+what is a UML??
+![UML]()
 
+#### notes
+
+does the login work? no  
+does the auth work? no  
+did i do the lab? also no   -->

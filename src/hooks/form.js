@@ -1,19 +1,18 @@
 import  { useState } from 'react';
 
-const useFormHandler = (cb)=>{
-  const [item, setItem] = useState({});
+const useFormHandler = ()=>{
+  const [formData, setFormData] = useState({});
 
   const handleInputChange = e => {
-    setItem({ ...item, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e,onSubmit) => {
     e.preventDefault();
+    onSubmit(formData);
     e.target.reset();
-    cb(item);
-    const newItem = {};
-    setItem(newItem);
   };
+
   return[handleInputChange , handleSubmit];
 }
 

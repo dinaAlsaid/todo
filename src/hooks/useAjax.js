@@ -1,89 +1,75 @@
-import { useState } from 'react';
-import axios from 'axios';
+import axios from "axios";
 
-const useAjax = (url) => {
-  const [list, setList] = useState([]);
+const useAjax = () => {
+  const url = "https://api-js401.herokuapp.com/api/v1/todo";
+
+  //GET
+  const _getTodoItems = async () => {
+    try {
+      let res = await axios({
+        url: url,
+        method: "get",
+        mode: "cors",
+      });
+      return res.data;
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   // POST
   const _addItem = (item) => {
     item.due = new Date();
-    axios({
+    return axios({
       url: url,
-      method: 'post',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: { 'Content-Type': 'application/json' },
-      data: item
+      method: "post",
+      mode: "cors",
+      cache: "no-cache",
+      headers: { "Content-Type": "application/json" },
+      data: item,
     })
-      .then(savedItem => {
-        console.log(savedItem);
-        setList([...list, savedItem.data])
-      })
+      .then((savedItem) => savedItem.data)
       .catch(console.error);
-
-  }
+  };
 
   //PUT
-  const _toggleComplete = id => {
-
-    let item = list.filter(i => i._id === id)[0] || {};
-
+  const _toggleComplete = (item) => {
     if (item._id) {
-
       item.complete = !item.complete;
 
-      let fullurl = `${url}/${id}`;
+      let fullurl = `${url}/${item._id}`;
 
-      axios({
+      return axios({
         url: fullurl,
-        method: 'put',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        data: item
+        method: "put",
+        mode: "cors",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json" },
+        data: item,
       })
-        .then(savedItem => {
-          setList(list.map(listItem => listItem._id === item._id ? savedItem.data : listItem));
-        })
+        .then((savedItem) => savedItem.data)
         .catch(console.error);
     }
   };
-  //GET
-  const _getTodoItems = () => {
-    axios({
-      url: url,
-      method: 'get',
-      mode: 'cors',
-    })
-      .then(data => setList(data.data.results))
-      .catch(console.error);
-  }
 
   //DELETE
-  const _deleteItem =(id)=>{
-    let item = list.filter(i => i._id === id)[0] || {};
-
+  const _deleteItem = (item) => {
     if (item._id) {
+      let fullurl = `${url}/${item._id}`;
 
-      let fullurl = `${url}/${id}`;
-
-      axios({
+      return axios({
         url: fullurl,
-        method: 'delete',
-        mode: 'cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        data: item
+        method: "delete",
+        mode: "cors",
+        cache: "no-cache",
+        headers: { "Content-Type": "application/json" },
+        data: item,
       })
-      .then(savedItem => {
-        setList(list.filter(listItem => listItem._id !== item._id ));
-      })
+        .then((savedItem) => savedItem.data)
         .catch(console.error);
     }
-
-  }
-  return [list, _addItem, _getTodoItems, _toggleComplete,_deleteItem]
-
-}
+  };
+  return [_addItem, _getTodoItems, _toggleComplete, _deleteItem];
+};
 
 export default useAjax;

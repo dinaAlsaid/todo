@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import TodoForm from "../components/todo/form.js";
 import TodoList from "../components/todo/list.js";
-import Pages from "../components/todo/pages.js";
+// import Pages from "../components/todo/pages.js";
 import useAjax from "../hooks/useAjax.js";
 import { SettingsContext } from "../context/settings.js";
 import { Col, Container, Row } from "react-bootstrap";
@@ -14,7 +14,7 @@ const ToDo = () => {
   const contextSettings = useContext(SettingsContext);
   const [allTodoList, setAllTodoList] = useState([]);
   const [shownItems, setShownItems] = useState([]);
-  const [activePage, setActivePage] = useState(1);
+  // const [activePage, setActivePage] = useState(1);
 
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
 
@@ -28,8 +28,7 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {
-      /* eslint-disable-line*/
+    return arr.filter((item) => {//eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -80,15 +79,15 @@ const ToDo = () => {
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
 
-          {/* <Row>
+          <Row>
             <Col md={3}>
               <TodoForm handleSubmit={addItem} />
             </Col>
 
-            <Col md={2}>
+            <Col md={9}>
               <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
             </Col>
-          </Row> */}
+          </Row>
 
           {/* <Pages
           items={shownItems}

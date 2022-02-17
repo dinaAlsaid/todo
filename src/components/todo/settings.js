@@ -9,7 +9,7 @@ function Settings() {
     <Container>
       <Form>
         <Row>
-          <Col>
+          {/* <Col>
             <Form.Label>
               <span>Number of notes per page</span>
             </Form.Label>
@@ -21,7 +21,7 @@ function Settings() {
               name="numberOfNotes"
               onChange={context.setNumOfNotes}
             />
-          </Col>
+          </Col> */}
           <Col>
             <Form.Check
               type="switch"

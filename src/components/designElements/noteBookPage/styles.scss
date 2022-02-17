@@ -1,0 +1,11 @@
+:root {
+  --subtle-grey: rgb(183 183 183 / 50%);
+  --border-color: var(--subtle-grey);
+  --subtle-box-shadow: 3px 3px 6px var(--subtle-grey);
+  --paper-shadow:var(--subtle-box-shadow), 25px 50px 100px 4px rgb(183 183 183 / 10%) inset;
+}
+.paper {
+  border: 1px solid var(--border-color);
+  box-shadow:  var(--paper-shadow);
+  min-height: 66vh;
+}

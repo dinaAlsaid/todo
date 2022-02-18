@@ -85,6 +85,7 @@ const ToDo = () => {
             </Col>
 
             <Col md={9}>
+              {/* TODO: setting is add to a tab to the right  */}
               <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
             </Col>
           </Row>

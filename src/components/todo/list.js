@@ -1,5 +1,5 @@
 import React from "react";
-import Toast from "react-bootstrap/Toast";
+// import Toast from "react-bootstrap/Toast";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index";
 
 function TodoList(props) {

@@ -1,18 +1,18 @@
 function ascend(a, b) {
-  if (a.rating < b.rating) {
+  if (a.difficulty < b.difficulty) {
     return -1;
   }
-  if (a.rating > b.rating) {
+  if (a.difficulty > b.difficulty) {
     return 1;
   }
   return 0;
 }
 
 function descend(a, b) {
-  if (a.rating > b.rating) {
+  if (a.difficulty > b.difficulty) {
     return -1;
   }
-  if (a.rating < b.rating) {
+  if (a.difficulty < b.difficulty) {
     return 1;
   }
   return 0;

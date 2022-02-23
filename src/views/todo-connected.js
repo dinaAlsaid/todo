@@ -1,18 +1,20 @@
 import React, { useEffect, useContext, useState } from "react";
-import TodoForm from "./form.js";
-import TodoList from "./list.js";
-import Pages from "./pages.js";
-import useAjax from "../../hooks/useAjax.js";
-import { SettingsContext } from "../../context/settings.js";
-import { Card, Col, Row } from "react-bootstrap";
-import sort from "../../Util/sort";
+import TodoForm from "../components/todo/form.js";
+import TodoList from "../components/todo/list.js";
+// import Pages from "../components/todo/pages.js";
+import useAjax from "../hooks/useAjax.js";
+import { SettingsContext } from "../context/settings.js";
+import { Col, Container, Row } from "react-bootstrap";
+import sort from "../Util/sort";
+import { NoteBookPage } from "../components/designElements/noteBookPage/index";
+
 // import "./todo.scss";
 
 const ToDo = () => {
   const contextSettings = useContext(SettingsContext);
   const [allTodoList, setAllTodoList] = useState([]);
   const [shownItems, setShownItems] = useState([]);
-  const [activePage, setActivePage] = useState(1);
+  // const [activePage, setActivePage] = useState(1);
 
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
 
@@ -21,14 +23,12 @@ const ToDo = () => {
   }, []); //eslint-disable-line
 
   useEffect(() => {
-
     setShownItems(sortList(filterCompleted([...allTodoList])));
-
   }, [allTodoList, contextSettings.showCompleted, contextSettings.sorted]); //eslint-disable-line
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {/* eslint-disable-line*/
+    return arr.filter((item) => {//eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -49,18 +49,8 @@ const ToDo = () => {
     }
   };
 
-  // const filterForPages = (arr) => {
-  //   return arr.filter((item, index) => {
-  //     // eslint-disable-line
-
-  //     if (Math.ceil(index / contextSettings.numberOfItems) === activePage) {
-  //       return item;
-  //     }
-  //   });
-  // };
-
   //api calls
-  
+
   const getAllItems = async () => {
     let response = await _getTodoItems();
 
@@ -85,28 +75,29 @@ const ToDo = () => {
 
   return (
     <>
-      <Card border="dark" style={{ margin: "0.5rem" }}>
-        <Card.Header as="h2">
-          There are {allTodoList.filter((item) => !item.complete).length} Items To Complete
-        </Card.Header>
+      <Container>
+        <NoteBookPage>
+          <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
 
-        <Row>
-          <Col md={3}>
-            <TodoForm handleSubmit={addItem} />
-          </Col>
+          <Row>
+            <Col md={3}>
+              <TodoForm handleSubmit={addItem} />
+            </Col>
 
-          <Col md={2}>
-            <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
-          </Col>
-        </Row>
+            <Col md={9}>
+              {/* TODO: setting is add to a tab to the right  */}
+              <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
+            </Col>
+          </Row>
 
-        <Pages
+          {/* <Pages
           items={shownItems}
           perPage={contextSettings.numberOfItems}
           activePage={activePage}
           setActivePage={setActivePage}
-        />
-      </Card>
+        /> */}
+        </NoteBookPage>
+      </Container>
     </>
   );
 };

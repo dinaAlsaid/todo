@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index";
-import { FiX } from "react-icons/fi";
 function TodoList(props) {
   return (
     <>
@@ -9,7 +8,6 @@ function TodoList(props) {
         <HandwrittenItem key={item.text} className={`complete-${item.complete.toString()}`}>
           <Row>
             <Col sm={1} md={1} onClick={() => props.handleDelete(item)}>
-              {/* <FiX /> */}
               <span className="delete">X</span>
             </Col>
             <Col>

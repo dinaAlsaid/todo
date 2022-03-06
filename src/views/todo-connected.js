@@ -39,6 +39,7 @@ const ToDo = () => {
     });
   };
 
+  // TODO: fix sort 
   const sortList = (arr) => {
     if (contextSettings.sorted === "None") {
       return arr;

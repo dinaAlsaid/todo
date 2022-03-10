@@ -7,7 +7,7 @@ import { SettingsContext } from "../context/settings.js";
 import { Col, Container, Row } from "react-bootstrap";
 import sort from "../Util/sort";
 import { NoteBookPage } from "../components/designElements/noteBookPage/index";
-
+import Tab from "../components/designElements/Tab/index"
 // import "./todo.scss";
 
 const ToDo = () => {
@@ -79,7 +79,7 @@ const ToDo = () => {
       <Container>
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
-
+          <Tab/>
           <Row>
             <Col md={3}>
               <TodoForm handleSubmit={addItem} />

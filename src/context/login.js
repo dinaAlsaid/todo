@@ -49,6 +49,7 @@ function LoginProvider (props) {
     loggedIn: false,
     login: login,
     logout: logout,
+    validateToken,
     user: {},
   };
   

@@ -4,11 +4,22 @@
   text-shadow: 3px 3px 7px rgb(183, 183, 183), -5px -3px 7px white;
 
   &.todo {
+    font-style: italic;
+
     &:hover {
       cursor: pointer;
     }
     &.complete-true {
-      text-decoration: 1px wavy line-through ;
+      .task {
+        text-decoration: 1px wavy line-through;
+      }
+    }
+    .delete {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 

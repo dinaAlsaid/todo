@@ -79,7 +79,7 @@ const ToDo = () => {
       <Container>
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
-          <Tab/>
+          <Tab color="blue"/>
           <Row>
             <Col md={3}>
               <TodoForm handleSubmit={addItem} />

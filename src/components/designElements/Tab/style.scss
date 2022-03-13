@@ -1,0 +1,14 @@
+.journalTab {
+  width: 40px;
+  .journalTabTitle {
+    transform: rotate(90deg) translateY(-40px);
+  }
+
+  &:hover {
+    width: 80px;
+
+    .journalTabTitle {
+      transform: rotate(90deg) translateY(-80px);
+    }
+  }
+}

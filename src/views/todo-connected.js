@@ -82,20 +82,17 @@ const ToDo = () => {
     setShowSettings(!showSettings);
   };
 
-  
   return (
     <>
       <Container>
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
-          <Tabs onClick={clickTab} />
 
-          {showSettings && (
-            <SideNote>
-              <Settings />
-            </SideNote>
-          )}
-          
+          <Tabs onClick={clickTab} />
+          <SideNote show={showSettings} onClose={clickTab}>
+            <Settings />
+          </SideNote>
+
           <Row>
             <Col md={3}>
               <TodoForm handleSubmit={addItem} />

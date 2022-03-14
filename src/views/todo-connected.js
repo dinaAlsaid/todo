@@ -1,19 +1,22 @@
 import React, { useEffect, useContext, useState } from "react";
 import TodoForm from "../components/todo/form.js";
 import TodoList from "../components/todo/list.js";
-// import Pages from "../components/todo/pages.js";
+import Settings from "../components/todo/settings.js";
 import useAjax from "../hooks/useAjax.js";
 import { SettingsContext } from "../context/settings.js";
 import { Col, Container, Row } from "react-bootstrap";
 import sort from "../Util/sort";
 import { NoteBookPage } from "../components/designElements/noteBookPage/index";
-import Tab from "../components/designElements/Tab/index"
-// import "./todo.scss";
+import Tabs from "../components/Tabs/index";
+import SideNote from "../components/designElements/SideNote/index";
+
+import "../components/designElements/commonStyles.scss";
 
 const ToDo = () => {
   const contextSettings = useContext(SettingsContext);
   const [allTodoList, setAllTodoList] = useState([]);
   const [shownItems, setShownItems] = useState([]);
+  const [showSettings, setShowSettings] = useState(false);
   // const [activePage, setActivePage] = useState(1);
 
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
@@ -28,7 +31,8 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {//eslint-disable-line
+    return arr.filter((item) => {
+      //eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -39,7 +43,7 @@ const ToDo = () => {
     });
   };
 
-  // TODO: fix sort 
+  // TODO: fix sort
   const sortList = (arr) => {
     if (contextSettings.sorted === "None") {
       return arr;
@@ -74,12 +78,24 @@ const ToDo = () => {
     setAllTodoList(allTodoList.filter((listItem) => listItem._id !== item._id));
   };
 
+  const clickTab = () => {
+    setShowSettings(!showSettings);
+  };
+
+  
   return (
     <>
       <Container>
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
-          <Tab color="blue"/>
+          <Tabs onClick={clickTab} />
+
+          {showSettings && (
+            <SideNote>
+              <Settings />
+            </SideNote>
+          )}
+          
           <Row>
             <Col md={3}>
               <TodoForm handleSubmit={addItem} />

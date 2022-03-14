@@ -6,7 +6,7 @@
 
   &:hover {
     width: 80px;
-
+    cursor: pointer;
     .journalTabTitle {
       transform: rotate(90deg) translateY(-80px);
     }

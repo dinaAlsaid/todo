@@ -86,7 +86,7 @@ const ToDo = () => {
     <>
       <Container>
         <NoteBookPage>
-          <div>There are {allTodoList.filter((item) => !item.complete).length} Items To Complete</div>
+          <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div>
 
           <Tabs onClick={clickTab} />
           <SideNote show={showSettings} onClose={clickTab}>

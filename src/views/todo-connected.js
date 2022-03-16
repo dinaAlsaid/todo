@@ -82,13 +82,23 @@ const ToDo = () => {
     setShowSettings(!showSettings);
   };
 
+  const tabsArray = [
+    {
+      title: "filters",
+      onClick: clickTab,
+    },
+  ];
+
+  const addTab =()=>{}
+
   return (
     <>
       <Container>
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div>
 
-          <Tabs onClick={clickTab} />
+          <Tabs data={tabsArray} addTab={addTab}/>
+
           <SideNote show={showSettings} onClose={clickTab}>
             <Settings />
           </SideNote>

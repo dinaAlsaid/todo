@@ -26,7 +26,7 @@ function Settings() {
             <Form.Check
               type="switch"
               id="custom-switch"
-              label="Show completed items"
+              label="Show how much is left"
               onChange={context.toggleShowCompleted}
             />
           </Col>
@@ -34,9 +34,10 @@ function Settings() {
 
         <Row>
           <Col>
-            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="No sort" value="None" />
-            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="desc" value="desc" />
-            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="asce" value="asce" />
+          <Form.Label>What to do first</Form.Label>
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Doesn't matter" value="None" />
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult stuff" value="desc" />
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult Easy stuff" value="asce" />
           </Col>
         </Row>
       </Form>

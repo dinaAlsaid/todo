@@ -6,9 +6,6 @@
   &.todo {
     font-style: italic;
 
-    &:hover {
-      cursor: pointer;
-    }
     &.complete-true {
       .task {
         text-decoration: 1px wavy line-through;

@@ -17,7 +17,7 @@ const ToDo = () => {
   const [allTodoList, setAllTodoList] = useState([]);
   const [shownItems, setShownItems] = useState([]);
   const [showSettings, setShowSettings] = useState(false);
-  // const [activePage, setActivePage] = useState(1);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
 
@@ -32,7 +32,6 @@ const ToDo = () => {
   //filters
   const filterCompleted = (arr) => {
     return arr.filter((item) => {//eslint-disable-line
-      //eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -89,7 +88,7 @@ const ToDo = () => {
     },
   ];
 
-  const addTab =()=>{}
+  const addTab = () => {};
 
   return (
     <>
@@ -97,20 +96,25 @@ const ToDo = () => {
         <NoteBookPage>
           <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div>
 
-          <Tabs data={tabsArray} addTab={addTab}/>
+          <Tabs data={tabsArray} addTab={addTab} />
 
           <SideNote show={showSettings} onClose={clickTab}>
             <Settings />
           </SideNote>
 
           <Row>
-            <Col md={3}>
-              <TodoForm handleSubmit={addItem} />
-            </Col>
+            <Col md={3}>{showAddForm && <TodoForm handleSubmit={addItem} />}</Col>
 
             <Col md={9}>
               {/* TODO: setting is add to a tab to the right  */}
-              <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
+              <TodoList
+                showAddForm={() => {
+                  setShowAddForm(true);
+                }}
+                list={shownItems}
+                handleComplete={updateCompleted}
+                handleDelete={deleteItem}
+              />
             </Col>
           </Row>
 

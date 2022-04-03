@@ -31,7 +31,7 @@ const Tab = ({ title, onClick, width, color }) => {
   },[color])
 
   return (
-    <div onClick={onClick} style={tabStyle} className="journalTab">
+    <div onClick={onClick} style={tabStyle} className="journalTab hover-pointer">
       <div style={titleStyles} className="journalTabTitle">
         {typeof title ==='function'? title(): title}
       </div>

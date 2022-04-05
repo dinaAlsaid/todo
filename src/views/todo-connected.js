@@ -32,12 +32,12 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {//eslint-disable-line
-      
+    return arr.filter((item) => {
+      //eslint-disable-line
       if (!contextSettings.showCompleted) {
         return item;
       } else {
-        if (!item.complete) {
+        if (item.complete === false) {
           return item;
         }
       }
@@ -55,8 +55,7 @@ const ToDo = () => {
     }
   };
 
-  //api calls
-
+  //#region api calls
   const getAllItems = async () => {
     let response = await _getTodoItems();
 
@@ -78,6 +77,7 @@ const ToDo = () => {
     await _deleteItem(item);
     setAllTodoList(allTodoList.filter((listItem) => listItem._id !== item._id));
   };
+  //#endregion
 
   const clickTab = () => {
     setShowSettings(!showSettings);
@@ -110,8 +110,6 @@ const ToDo = () => {
           </Row>
 
           <Row>
-            <Col md={3}>{showAddForm && <TodoForm handleSubmit={addItem} />}</Col>
-
             <Col md={9}>
               <TodoList
                 showAddForm={() => {
@@ -123,6 +121,7 @@ const ToDo = () => {
               />
             </Col>
           </Row>
+            <Row>{showAddForm && <TodoForm handleSubmit={addItem} />}</Row>
 
           {/* <Pages
           items={shownItems}

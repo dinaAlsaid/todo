@@ -20,6 +20,7 @@ const Tab = ({ title, onClick, width, color }) => {
     padding: 5,
     boxSizing: "border-box",
     textAlign: "center",
+    
   };
 
   useEffect(()=>{

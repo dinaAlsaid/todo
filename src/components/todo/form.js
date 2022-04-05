@@ -1,48 +1,35 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import useFormHandler from "../../hooks/form.js";
+import { HandwrittenItem } from "../designElements/HandwrittenItem/index.js";
+import { HiCheck } from "react-icons/all";
 
 function TodoForm(props) {
   const [handleInputChange, handleSubmit] = useFormHandler();
 
-
   return (
     <>
-      <Card>
-        <Card.Body>
-          <Form onSubmit={e=>handleSubmit(e,props.handleSubmit)}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>
-                <span>To Do Item</span>
-              </Form.Label>
-              <Form.Control type="text" name="text" placeholder="Add To Do List Item" onChange={handleInputChange} />
+      <HandwrittenItem>
+        <form onSubmit={(e) => handleSubmit(e, props.handleSubmit)}>
+            <input type="text" autoComplete="off" name="text" placeholder="Add New Item" onChange={handleInputChange} />
 
-              <Form.Label>
-                <span>Difficulty Rating</span>
-              </Form.Label>
-              <Form.Control
-                type="range"
-                defaultValue="1"
-                min="1"
-                max="5"
-                name="difficulty"
-                onChange={handleInputChange}
-              />
+            <input type="text" autoComplete="off" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
 
-              <Form.Label>
-                <span>Assigned To</span>
-              </Form.Label>
-              <Form.Control type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
+            <input
+              type="range"
+              defaultValue="1"
+              min="1"
+              max="5"
+              name="difficulty"
+              onChange={handleInputChange}
+            />
 
-              <Button variant="primary" type="submit">
-                Add Item
-              </Button>
-            </Form.Group>
-          </Form>
-        </Card.Body>
-      </Card>
+            <Button variant="link" className ="button-icon" type="submit">
+              <HiCheck />
+            </Button>
+        </form>
+      </HandwrittenItem>
     </>
   );
 }

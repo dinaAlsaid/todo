@@ -29,13 +29,13 @@ function TodoList(props) {
         </HandwrittenItem>
       ))}
       
-      <HandwrittenItem key="new item">
+      {!props.showAddForm&&<HandwrittenItem key="new item">
         <Row>
-          <Col sm={1} md={1} onClick={props.showAddForm}>
+          <Col sm={1} md={1} onClick={props.onAddItemClick}>
             <HiPlus className="hover-pointer bullet-icons" />
           </Col>
         </Row>
-      </HandwrittenItem>
+      </HandwrittenItem>}
     </>
   );
 }

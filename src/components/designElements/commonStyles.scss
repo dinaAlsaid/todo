@@ -32,7 +32,8 @@
       background-color: transparent;
       border: none;
       border-bottom: 1px solid grey;
-
+      text-transform: uppercase;
+      
       &:focus-visible {
         outline: none;
       }
@@ -45,6 +46,5 @@
     //     color: aqua;
     //   }
     // }
-
   }
 }

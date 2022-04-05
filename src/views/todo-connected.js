@@ -112,16 +112,26 @@ const ToDo = () => {
           <Row>
             <Col md={9}>
               <TodoList
-                showAddForm={() => {
+                onAddItemClick={() => {
                   setShowAddForm(true);
                 }}
+                showAddForm={showAddForm}
                 list={shownItems}
                 handleComplete={updateCompleted}
                 handleDelete={deleteItem}
               />
             </Col>
           </Row>
-            <Row>{showAddForm && <TodoForm handleSubmit={addItem} />}</Row>
+          <Row>
+            {showAddForm && (
+              <TodoForm
+                handleSubmit={addItem}
+                onCloseClick={() => {
+                  setShowAddForm(false);
+                }}
+              />
+            )}
+          </Row>
 
           {/* <Pages
           items={shownItems}

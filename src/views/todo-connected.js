@@ -32,8 +32,8 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {
-      //eslint-disable-line
+    return arr.filter((item) => {//eslint-disable-line
+      
       if (!contextSettings.showCompleted) {
         return item;
       } else {

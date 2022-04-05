@@ -37,7 +37,7 @@ function Settings() {
           <Form.Label>What to do first</Form.Label>
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Doesn't matter" value="None" />
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult stuff" value="desc" />
-            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult Easy stuff" value="asce" />
+            <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Easy stuff" value="asce" />
           </Col>
         </Row>
       </Form>

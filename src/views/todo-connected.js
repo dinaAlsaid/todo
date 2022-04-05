@@ -11,6 +11,7 @@ import Tabs from "../components/Tabs/index";
 import SideNote from "../components/designElements/SideNote/index";
 
 import "../components/designElements/commonStyles.scss";
+import { PageTitle } from "../components/designElements/PageTitle/index.js";
 
 const ToDo = () => {
   const contextSettings = useContext(SettingsContext);
@@ -32,6 +33,7 @@ const ToDo = () => {
   //filters
   const filterCompleted = (arr) => {
     return arr.filter((item) => {//eslint-disable-line
+      
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -94,19 +96,23 @@ const ToDo = () => {
     <>
       <Container>
         <NoteBookPage>
-          <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div>
+          {/* <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div> */}
 
           <Tabs data={tabsArray} addTab={addTab} />
 
           <SideNote show={showSettings} onClose={clickTab}>
             <Settings />
           </SideNote>
+          <Row>
+            <Col>
+              <PageTitle title="Todo List" />
+            </Col>
+          </Row>
 
           <Row>
             <Col md={3}>{showAddForm && <TodoForm handleSubmit={addItem} />}</Col>
 
             <Col md={9}>
-              {/* TODO: setting is add to a tab to the right  */}
               <TodoList
                 showAddForm={() => {
                   setShowAddForm(true);

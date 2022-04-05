@@ -13,7 +13,7 @@ const SideNote = ({ children, show,onClose }) => {
     <>
       {show && (
 
-        <div className="paper" style={sideNotestyle}>
+        <div className="paper side-note" style={sideNotestyle}>
           <div onClick={onClose} className="closeBtn">{"<"}</div>
           {children}
         </div>

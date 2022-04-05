@@ -1,10 +1,10 @@
 .listItem {
-  font-family: "small letters";
-  font-size: xx-large;
-  text-shadow: 3px 3px 7px rgb(183, 183, 183), -5px -3px 7px white;
-
+  font-family: "little sunshine";
+  font-size: 1.8rem;
+  line-height: initial;
+  text-transform: uppercase;
   &.todo {
-    font-style: italic;
+    // font-style: italic;
 
     &.complete-true {
       .task {
@@ -12,10 +12,9 @@
       }
     }
     .delete {
-      opacity: 0.7;
 
       &:hover {
-        opacity: 0.8;
+        color:rgba($color: #db4646, $alpha: 0.8);
       }
     }
   }

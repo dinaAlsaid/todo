@@ -8,8 +8,32 @@
     src: url("./assets/fonts/Rock_Salt/RockSalt-Regular.ttf");
 }
 
+@font-face {
+    font-family: "uhudscript";
+    src: url("./assets/fonts/uhudscript/Uhudscript.ttf");
+}
+
+@font-face {
+    font-family: "little sunshine";
+    src: url("./assets/fonts/a_little_sunshine/little_sunshine.ttf");
+}
+
+@font-face {
+    font-family: "alagambe";
+    src: url("./assets/fonts/alagambe/alagambe.otf");
+}
+
 :root {
     --subtle-grey: rgb(183 183 183 / 16%);
     --border-color: var(--subtle-grey);
     --subtle-box-shadow: 3px 3px 20px rgba(183 ,183 ,183 , 40%);
+    --paper-shadow: var(--subtle-box-shadow); /*,,-10px -10px 31px 0px rgba(183 ,183 ,183 , 5%) inset*/
+
 }  
+
+.hover-pointer{
+    &:hover {
+        cursor: pointer;
+      }
+  
+}

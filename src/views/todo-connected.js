@@ -11,13 +11,14 @@ import Tabs from "../components/Tabs/index";
 import SideNote from "../components/designElements/SideNote/index";
 
 import "../components/designElements/commonStyles.scss";
+import { PageTitle } from "../components/designElements/PageTitle/index.js";
 
 const ToDo = () => {
   const contextSettings = useContext(SettingsContext);
   const [allTodoList, setAllTodoList] = useState([]);
   const [shownItems, setShownItems] = useState([]);
   const [showSettings, setShowSettings] = useState(false);
-  // const [activePage, setActivePage] = useState(1);
+  const [showAddForm, setShowAddForm] = useState(false);
 
   const [_addItem, _getTodoItems, _toggleComplete, _deleteItem] = useAjax();
 
@@ -31,12 +32,12 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {//eslint-disable-line
-      //eslint-disable-line
+    return arr.filter((item) => {      //eslint-disable-line
+
       if (!contextSettings.showCompleted) {
         return item;
       } else {
-        if (!item.complete) {
+        if (item.complete === false) {
           return item;
         }
       }
@@ -54,8 +55,7 @@ const ToDo = () => {
     }
   };
 
-  //api calls
-
+  //#region api calls
   const getAllItems = async () => {
     let response = await _getTodoItems();
 
@@ -77,31 +77,62 @@ const ToDo = () => {
     await _deleteItem(item);
     setAllTodoList(allTodoList.filter((listItem) => listItem._id !== item._id));
   };
+  //#endregion
 
   const clickTab = () => {
     setShowSettings(!showSettings);
   };
 
+  const tabsArray = [
+    {
+      title: "filters",
+      onClick: clickTab,
+    },
+  ];
+
+  const addTab = () => {};
+
   return (
     <>
       <Container>
         <NoteBookPage>
-          <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div>
+          {/* <div>There are {allTodoList.filter((item) => !item?.complete).length} Items To Complete</div> */}
 
-          <Tabs onClick={clickTab} />
+          <Tabs data={tabsArray} addTab={addTab} />
+
           <SideNote show={showSettings} onClose={clickTab}>
             <Settings />
           </SideNote>
+          <Row>
+            <Col>
+              <PageTitle title="Todo List" />
+            </Col>
+          </Row>
 
           <Row>
-            <Col md={3}>
-              <TodoForm handleSubmit={addItem} />
+            <Col md={12}>
+              <TodoList
+                onAddItemClick={() => {
+                  setShowAddForm(true);
+                }}
+                showAddForm={showAddForm}
+                list={shownItems}
+                handleComplete={updateCompleted}
+                handleDelete={deleteItem}
+              />
             </Col>
-
-            <Col md={9}>
-              {/* TODO: setting is add to a tab to the right  */}
-              <TodoList list={shownItems} handleComplete={updateCompleted} handleDelete={deleteItem} />
-            </Col>
+          </Row>
+          <Row>
+            {showAddForm && (
+              <Col md={12}>
+                <TodoForm
+                  handleSubmit={addItem}
+                  onCloseClick={() => {
+                    setShowAddForm(false);
+                  }}
+                />
+              </Col>
+            )}
           </Row>
 
           {/* <Pages

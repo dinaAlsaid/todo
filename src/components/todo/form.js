@@ -1,48 +1,51 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Form from "react-bootstrap/Form";
 import useFormHandler from "../../hooks/form.js";
+import { HandwrittenItem } from "../designElements/HandwrittenItem/index.js";
+import { HiCheck, HiX } from "react-icons/all";
+import { Row, Col } from "react-bootstrap";
 
 function TodoForm(props) {
   const [handleInputChange, handleSubmit] = useFormHandler();
 
-
   return (
     <>
-      <Card>
-        <Card.Body>
-          <Form onSubmit={e=>handleSubmit(e,props.handleSubmit)}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>
-                <span>To Do Item</span>
-              </Form.Label>
-              <Form.Control type="text" name="text" placeholder="Add To Do List Item" onChange={handleInputChange} />
-
-              <Form.Label>
-                <span>Difficulty Rating</span>
-              </Form.Label>
-              <Form.Control
-                type="range"
-                defaultValue="1"
-                min="1"
-                max="5"
-                name="difficulty"
+      <HandwrittenItem>
+        <form onSubmit={(e) => handleSubmit(e, props.handleSubmit)}>
+          <Row>
+            <Col sm={1} md={1}  className="hover-pointer delete bullet-icons" >
+              <HiX onClick={props.onCloseClick} />
+            </Col>
+            <Col md="auto">
+              <input
+                type="text"
+                autoComplete="off"
+                name="text"
+                placeholder="Add New Item"
                 onChange={handleInputChange}
               />
+            </Col>
+            <Col md="auto">
+              <input type="range" defaultValue="1" min="1" max="5" name="difficulty" onChange={handleInputChange} />
+            </Col>
+            <Col md="auto">
+              <input
+                type="text"
+                autoComplete="off"
+                name="assignee"
+                placeholder="Assigned To"
+                onChange={handleInputChange}
+              />
+            </Col>
 
-              <Form.Label>
-                <span>Assigned To</span>
-              </Form.Label>
-              <Form.Control type="text" name="assignee" placeholder="Assigned To" onChange={handleInputChange} />
-
-              <Button variant="primary" type="submit">
-                Add Item
+            <Col sm={1} md={1} lg={1}>
+              <Button variant="link" className="button-icon" type="submit">
+                <HiCheck />
               </Button>
-            </Form.Group>
-          </Form>
-        </Card.Body>
-      </Card>
+            </Col>
+          </Row>
+        </form>
+      </HandwrittenItem>
     </>
   );
 }

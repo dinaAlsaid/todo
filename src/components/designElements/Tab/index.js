@@ -1,38 +1,40 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
+import PropTypes from "prop-types";
 import "./style.scss";
 import { randomColorGenerator } from "../../../Util/randomColorGenerator";
 
-let availableColors = [];
-const generateNewColor = () => {
-  let newColor;
-  let found = false;
-  do {
-    newColor = randomColorGenerator();
-    found = availableColors.includes(newColor);
-  } while (found);
 
-  availableColors.push(newColor);
-  return newColor;
-};
+const Tab = ({ title, onClick, width, color }) => {
+  const [tabColor,setTabColor] = useState(randomColorGenerator())
 
-const Tab = ({ title, onClick, children, color }) => {
   const tabStyle = {
-    height: 100,
-    backgroundColor: color,
+    height: width,
+    backgroundColor: tabColor,
     borderRadius: "0 5px 5px 0",
   };
+
   const titleStyles = {
-    width: 100,
+    width: width,
     textOverflow: "ellipsis",
     transformOrigin: "top left",
     padding: 5,
     boxSizing: "border-box",
+    textAlign: "center",
+    
   };
 
+  useEffect(()=>{
+    if(color){
+      setTabColor(color)
+    }else{
+      setTabColor(randomColorGenerator())
+    }
+  },[color])
+
   return (
-    <div onClick={onClick} style={tabStyle} className="journalTab">
+    <div onClick={onClick} style={tabStyle} className="journalTab hover-pointer">
       <div style={titleStyles} className="journalTabTitle">
-        {title}
+        {typeof title ==='function'? title(): title}
       </div>
     </div>
   );
@@ -41,5 +43,10 @@ const Tab = ({ title, onClick, children, color }) => {
 export default Tab;
 Tab.defaultProps = {
   title: "New Tab",
-  color: generateNewColor(),
+  width:100,
+};
+
+Tab.propTypes = {
+  title: PropTypes.string || PropTypes.func,
+  width:PropTypes.string || PropTypes.number
 };

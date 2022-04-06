@@ -32,8 +32,8 @@ const ToDo = () => {
 
   //filters
   const filterCompleted = (arr) => {
-    return arr.filter((item) => {//eslint-disable-line
-      
+    return arr.filter((item) => {      //eslint-disable-line
+
       if (!contextSettings.showCompleted) {
         return item;
       } else {
@@ -110,7 +110,7 @@ const ToDo = () => {
           </Row>
 
           <Row>
-            <Col md={9}>
+            <Col md={12}>
               <TodoList
                 onAddItemClick={() => {
                   setShowAddForm(true);
@@ -124,12 +124,14 @@ const ToDo = () => {
           </Row>
           <Row>
             {showAddForm && (
-              <TodoForm
-                handleSubmit={addItem}
-                onCloseClick={() => {
-                  setShowAddForm(false);
-                }}
-              />
+              <Col md={12}>
+                <TodoForm
+                  handleSubmit={addItem}
+                  onCloseClick={() => {
+                    setShowAddForm(false);
+                  }}
+                />
+              </Col>
             )}
           </Row>
 

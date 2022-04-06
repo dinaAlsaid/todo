@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import useFormHandler from "../../hooks/form.js";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index.js";
 import { HiCheck, HiX } from "react-icons/all";
+import { Row, Col } from "react-bootstrap";
 
 function TodoForm(props) {
   const [handleInputChange, handleSubmit] = useFormHandler();
@@ -10,24 +11,39 @@ function TodoForm(props) {
   return (
     <>
       <HandwrittenItem>
-        <HiX onClick={props.onCloseClick} className="hover-pointer"/>
-
         <form onSubmit={(e) => handleSubmit(e, props.handleSubmit)}>
-          <input type="text" autoComplete="off" name="text" placeholder="Add New Item" onChange={handleInputChange} />
+          <Row>
+            <Col sm={1} md={1}  className="hover-pointer delete bullet-icons" >
+              <HiX onClick={props.onCloseClick} />
+            </Col>
+            <Col md="auto">
+              <input
+                type="text"
+                autoComplete="off"
+                name="text"
+                placeholder="Add New Item"
+                onChange={handleInputChange}
+              />
+            </Col>
+            <Col md="auto">
+              <input type="range" defaultValue="1" min="1" max="5" name="difficulty" onChange={handleInputChange} />
+            </Col>
+            <Col md="auto">
+              <input
+                type="text"
+                autoComplete="off"
+                name="assignee"
+                placeholder="Assigned To"
+                onChange={handleInputChange}
+              />
+            </Col>
 
-          <input
-            type="text"
-            autoComplete="off"
-            name="assignee"
-            placeholder="Assigned To"
-            onChange={handleInputChange}
-          />
-
-          <input type="range" defaultValue="1" min="1" max="5" name="difficulty" onChange={handleInputChange} />
-
-          <Button variant="link" className="button-icon" type="submit">
-            <HiCheck />
-          </Button>
+            <Col sm={1} md={1} lg={1}>
+              <Button variant="link" className="button-icon" type="submit">
+                <HiCheck />
+              </Button>
+            </Col>
+          </Row>
         </form>
       </HandwrittenItem>
     </>

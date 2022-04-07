@@ -18,4 +18,5 @@ export const HandwrittenItem = ({ style, className, children }) => {
 
 HandwrittenItem.defaultProps = {
   className: "",
+  style:{}
 };

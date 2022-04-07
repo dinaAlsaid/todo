@@ -1,13 +1,14 @@
 import React from "react";
 import "./styles.scss";
 import {HiChevronLeft} from "react-icons/all"
-const SideNote = ({ children, show,onClose }) => {
+const SideNote = ({ children, show,onClose,style }) => {
   const sideNotestyle = {
     position: "absolute",
     left: "100%",
     transform: "rotate(-2deg)",
     height: "30vw",
     width: "19vw",
+    ...style,
   };
   return (
     <>
@@ -23,3 +24,6 @@ const SideNote = ({ children, show,onClose }) => {
 };
 
 export default SideNote;
+SideNote.defaultProps={
+  style:{}
+}

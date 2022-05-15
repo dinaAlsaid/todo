@@ -9,6 +9,7 @@ import sort from "../Util/sort";
 import { NoteBookPage } from "../components/designElements/noteBookPage/index";
 import Tabs from "../components/Tabs/index";
 import SideNote from "../components/designElements/SideNote/index";
+import { BsFunnel} from "react-icons/all";
 
 import "../components/designElements/commonStyles.scss";
 import { PageTitle } from "../components/designElements/PageTitle/index.js";
@@ -85,7 +86,7 @@ const ToDo = () => {
 
   const tabsArray = [
     {
-      title: "filters",
+      title: ()=><BsFunnel className=" bullet-icons"/>,
       onClick: clickTab,
     },
   ];

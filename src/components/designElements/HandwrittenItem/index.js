@@ -4,9 +4,10 @@ import "./styles.scss";
 export const HandwrittenItem = ({ style, className, children }) => {
   const itemStyles = {
     fontFamily: "little sunshine",
-    fontSize: "1.8rem",
+    fontSize: "1.5rem",
     lineHeight: "initial",
-    textTransform: "uppercase",
+    textTransform: "lowercase",
+    letterSpacing: ".35rem",
     ...style,
   };
   return (

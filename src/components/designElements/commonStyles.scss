@@ -7,11 +7,18 @@
   .text {
     text-shadow: 3px 3px 7px rgb(183, 183, 183), -5px -3px 7px white;
   }
+
+  &.side-note{
+    padding:0.5em;
+  }
 }
 
 .bullet-icons {
   opacity: 0.7;
   font-size: large;
+  &.small{
+    font-size: small;
+  }
   &:hover {
     opacity: 0.8;
   }

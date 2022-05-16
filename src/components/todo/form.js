@@ -16,7 +16,7 @@ function TodoForm(props) {
             <Col sm={1} md={1}></Col>
 
             <Col md="auto">
-              <span className="bullet-icons small hover-pointer m-2">
+              <span className="bullet-icons small m-2">
                 <BsCircle />
               </span>
 

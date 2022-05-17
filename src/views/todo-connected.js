@@ -1,18 +1,19 @@
 import React, { useEffect, useContext, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { BsFunnel} from "react-icons/all";
+
+import sort from "../Util/sort";
+import useAjax from "../hooks/useAjax.js";
 import TodoForm from "../components/todo/form.js";
 import TodoList from "../components/todo/list.js";
 import Settings from "../components/todo/settings.js";
-import useAjax from "../hooks/useAjax.js";
-import { SettingsContext } from "../context/settings.js";
-import { Col, Container, Row } from "react-bootstrap";
-import sort from "../Util/sort";
-import { NoteBookPage } from "../components/designElements/noteBookPage/index";
 import Tabs from "../components/Tabs/index";
 import SideNote from "../components/designElements/SideNote/index";
-import { BsFunnel} from "react-icons/all";
+import { PageTitle } from "../components/designElements/PageTitle/index.js";
+import { NoteBookPage } from "../components/designElements/noteBookPage/index";
+import { SettingsContext } from "../context/settings.js";
 
 import "../components/designElements/commonStyles.scss";
-import { PageTitle } from "../components/designElements/PageTitle/index.js";
 
 const ToDo = () => {
   const contextSettings = useContext(SettingsContext);

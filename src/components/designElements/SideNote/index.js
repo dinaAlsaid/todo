@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import {HiChevronLeft} from "react-icons/all"
+
 const SideNote = ({ children, show,onClose,style }) => {
   const sideNotestyle = {
     position: "absolute",
@@ -8,17 +9,18 @@ const SideNote = ({ children, show,onClose,style }) => {
     transform: "rotate(-2deg)",
     height: "30vw",
     width: "19vw",
+    visibility:show?"visible":"hidden",//to load font 
     ...style,
   };
   return (
     <>
-      {show && (
+      {/* {show && ( */}
 
         <div className="paper side-note" style={sideNotestyle}>
           <div onClick={onClose} className="hover-pointer bullet-icons"><HiChevronLeft/></div>
           {children}
         </div>
-      )}
+      {/* )} */}
     </>
   );
 };

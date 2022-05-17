@@ -1,12 +1,11 @@
 import React from "react";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index";
-import { TodoListContainer } from "../designElements/TodoListContainer";
 import { TodoListItem } from "../designElements/ListItem/index";
 import { HiPlus, HiX } from "react-icons/all";
 
 function TodoList(props) {
   return (
-    <TodoListContainer>
+    <>
       {props.list.map((item) => (
         <HandwrittenItem key={item.text}>
           <TodoListItem
@@ -35,7 +34,7 @@ function TodoList(props) {
           />
         </HandwrittenItem>
       )}
-    </TodoListContainer>
+    </>
   );
 }
 

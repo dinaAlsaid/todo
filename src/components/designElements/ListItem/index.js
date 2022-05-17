@@ -25,9 +25,9 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
         <Col className="hover-pointer" onClick={handleStatus}>
           <span className="bullet-icons small m-2">{getStatusIcon(status)}</span>
           <span className="task">{item}</span>
-          <li style={{marginInlineStart: "1.5rem"}}>{note}</li>
+          <li className="note">{note}</li>
         </Col>
-        <Col onClick={handleAction}>{actionButton}</Col>
+        <Col sm={1} md={1} onClick={handleAction}>{actionButton}</Col>
       </Row>
     </li>
   );

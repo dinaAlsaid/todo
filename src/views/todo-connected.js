@@ -11,6 +11,7 @@ import Tabs from "../components/Tabs/index";
 import SideNote from "../components/designElements/SideNote/index";
 import { PageTitle } from "../components/designElements/PageTitle/index.js";
 import { NoteBookPage } from "../components/designElements/noteBookPage/index";
+import { TodoListContainer } from "../components/designElements/TodoListContainer/index";
 import { SettingsContext } from "../context/settings.js";
 
 import "../components/designElements/commonStyles.scss";
@@ -111,31 +112,26 @@ const ToDo = () => {
             </Col>
           </Row>
 
-          <Row>
-            <Col md={12}>
-              <TodoList
-                onAddItemClick={() => {
-                  setShowAddForm(true);
-                }}
-                showAddForm={showAddForm}
-                list={shownItems}
-                handleComplete={updateCompleted}
-                handleDelete={deleteItem}
-              />
-            </Col>
-          </Row>
-          <Row>
-            {showAddForm && (
-              <Col md={12}>
-                <TodoForm
-                  handleSubmit={addItem}
-                  onCloseClick={() => {
-                    setShowAddForm(false);
+          <TodoListContainer>
+                <TodoList
+                  onAddItemClick={() => {
+                    setShowAddForm(true);
                   }}
+                  showAddForm={showAddForm}
+                  list={shownItems}
+                  handleComplete={updateCompleted}
+                  handleDelete={deleteItem}
                 />
-              </Col>
-            )}
-          </Row>
+              {showAddForm && (
+
+                  <TodoForm
+                    handleSubmit={addItem}
+                    onCloseClick={() => {
+                      setShowAddForm(false);
+                    }}
+                  />
+              )}
+          </TodoListContainer>
 
           {/* <Pages
           items={shownItems}

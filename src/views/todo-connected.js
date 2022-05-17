@@ -68,7 +68,7 @@ const ToDo = () => {
   };
 
   const addItem = async (item) => {
-    setAllTodoList([await _addItem(item), ...allTodoList]);
+    setAllTodoList([...allTodoList,await _addItem(item)]);
   };
 
   const updateCompleted = async (item) => {

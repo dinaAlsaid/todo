@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 import LoginProvider from "./context/login.js";
 import SettingsProvider from "./context/settings.js";
@@ -13,15 +13,15 @@ import "./app.scss";
 export default function App() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <link
           rel="preload"
           href="./assets/fonts/Reenie_Beanie/ReenieBeanie-Regular.woff2"
           as="font"
           type="font/woff2"
-          crossorigin
+          crossorigin="anonymous"
         />
-      </Helmet>
+      </Helmet> */}
 
       <LoginProvider>
         <SettingsProvider>

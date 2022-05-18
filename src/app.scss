@@ -1,17 +1,18 @@
 @font-face {
     font-family: "ReenieBeanie";
-    src: local("ReenieBeanie"),
-    url("./assets/fonts/Reenie_Beanie/ReenieBeanie-Regular.woff2");
+    src: url("./assets/fonts/Reenie_Beanie/ReenieBeanie-Regular.woff2");
+    font-display: block;
+
 }
 
 @font-face {
     font-family: "Rock Salt";
-    src: url("./assets/fonts/Rock_Salt/RockSalt-Regular.ttf");
+    src: url("./assets/fonts/Rock_Salt/RockSalt-Regular.woff2");
 }
 
 @font-face {
     font-family: "uhudscript";
-    src: url("./assets/fonts/uhudscript/Uhudscript.ttf");
+    src: url("./assets/fonts/uhudscript/Uhudscript.woff2");
 }
 
 @font-face {
@@ -21,7 +22,7 @@
 
 @font-face {
     font-family: "alagambe";
-    src: url("./assets/fonts/alagambe/alagambe.otf");
+    src: url("./assets/fonts/alagambe/alagambe.woff2");
 }
 
 :root {

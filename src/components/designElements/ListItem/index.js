@@ -5,9 +5,9 @@ import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
   const getStatusIcon = (status) => {
     switch (status) {
-      case "complete":
+      case "done":
         return <BsCircleFill />;
-      case "inProgress":
+      case "doing":
         return <BsCircleHalf />;
       case "todo":
         return <BsCircle />;

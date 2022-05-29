@@ -19,7 +19,6 @@ const useAjax = () => {
 
   // POST
   const _addItem = (item) => {
-    item.due = new Date();
     return axios({
       url: url,
       method: "post",
@@ -38,12 +37,12 @@ const useAjax = () => {
 
       switch (item.status) {
         case "todo":
-          item.status = "inProgress";
+          item.status = "doing";
           break;
-        case "inProgress":
-          item.status = "complete";
+        case "doing":
+          item.status = "done";
           break;
-        case "complete":
+        case "done":
           item.status = "todo";
           break;
         default:

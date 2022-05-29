@@ -62,8 +62,8 @@ const ToDo = () => {
   const getAllItems = async () => {
     let response = await _getTodoItems();
 
-    if (response) {
-      setAllTodoList([...response.results]);
+    if (response && response.length) {
+      setAllTodoList([...response]);
     }
   };
 
@@ -119,7 +119,7 @@ const ToDo = () => {
                   }}
                   showAddForm={showAddForm}
                   list={shownItems}
-                  handleComplete={updateCompleted}
+                  handleStatus={updateCompleted}
                   handleDelete={deleteItem}
                 />
               {showAddForm && (

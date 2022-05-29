@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const useAjax = () => {
-  const url = "https://api-js401.herokuapp.com/api/v1/todo";
+  const url = process.env.REACT_APP_API;
 
   //GET
   const _getTodoItems = async () => {
@@ -35,8 +35,21 @@ const useAjax = () => {
   //PUT
   const _toggleComplete = (item) => {
     if (item._id) {
-      item.complete = !item.complete;
 
+      switch (item.status) {
+        case "todo":
+          item.status = "inProgress";
+          break;
+        case "inProgress":
+          item.status = "complete";
+          break;
+        case "complete":
+          item.status = "todo";
+          break;
+        default:
+          item.status = "todo";
+      }
+      
       let fullurl = `${url}/${item._id}`;
 
       return axios({

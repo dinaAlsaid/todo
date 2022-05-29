@@ -49,7 +49,7 @@ const AddItemForm = (props) => {
           />
         </Col>
         <Col md="auto">
-          <input type="range" defaultValue="1" min="1" max="5" name="difficulty" onChange={handleInputChange} />
+          <input type="range" defaultValue="1" min="1" max="5" name="importance" onChange={handleInputChange} />
         </Col>
         <Col>
           <Button variant="link" className="button-icon" type="submit">

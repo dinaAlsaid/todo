@@ -11,9 +11,9 @@ function TodoList(props) {
           <TodoListItem
             icon={<></>}
             item={item.text}
-            status={item.complete}
-            note={<small className="float">Difficulty: {item.difficulty}</small>}
-            handleStatus={() => props.handleComplete(item)}
+            status={item.status}
+            note={<small className="float">Importance: {item.importance}</small>}
+            handleStatus={() => props.handleStatus(item)}
             actionButton={
               <span className="delete bullet-icons hover-pointer">
                 <HiX />

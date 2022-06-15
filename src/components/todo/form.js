@@ -53,7 +53,41 @@ const AddItemForm = (props) => {
           </Row>
 
           <Row>
-            <span className="text-danger lh-sm">{errors.text?.message}</span>
+            <span className="text-danger">{errors.text?.message}</span>
+          </Row>
+        </Col>
+
+        <Col md="auto">
+          <Row>
+            <input type="textarea" name="note" placeholder="note" autoComplete="off" {...register("note")} />
+          </Row>
+        </Col>
+
+        <Col md="auto">
+          <Row>
+            <input type="date" name="due" {...register("due")} />
+          </Row>
+        </Col>
+
+        <Col md="auto">
+          <Row>
+            <input type="checkbox" name="importance" {...register("importance")} />
+          </Row>
+        </Col>
+
+        {/* <Col md="auto">
+          <Row>
+            <input
+              type="text"
+              autoComplete="off"
+              name="text"
+              placeholder="Add New Item"
+              {...register("text", { required: { value: true, message: "what is the task???" } })}
+            />
+          </Row>
+
+          <Row>
+            <span className="text-danger">{errors.text?.message}</span>
           </Row>
         </Col>
         <Col md="auto">
@@ -63,7 +97,7 @@ const AddItemForm = (props) => {
         <Col md="auto">
           <input type="range" defaultValue="1" min="1" max="5" name="importance" {...register("importance")} />
           <span>{errors.importance?.message}</span>
-        </Col>
+        </Col> */}
         <Col>
           <Button variant="link" className="button-icon" type="submit">
             <HiCheck />

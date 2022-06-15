@@ -39,7 +39,7 @@
 .listItem.text.todo {
   input {
 
-    &[type="text"] {
+    &[type="text"],&[type="textarea"],&[type="date"] {
       background-color: transparent;
       border: none;
       border-bottom: 1px solid grey;

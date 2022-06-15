@@ -19,7 +19,7 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
   return (
     <li>
       <Row>
-        <Col sm={1} md={1}>
+        <Col sm={1} md={1} >
           {icon}
         </Col>
         <Col className="hover-pointer" onClick={handleStatus}>

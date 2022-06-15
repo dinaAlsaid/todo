@@ -1,7 +1,7 @@
 import React from "react";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index";
 import { TodoListItem } from "../designElements/ListItem/index";
-import { HiPlus, HiX } from "react-icons/all";
+import { HiPlus, HiX,BsStars } from "react-icons/all";
 
 function TodoList(props) {
   return (
@@ -9,10 +9,10 @@ function TodoList(props) {
       {props.list.map((item) => (
         <HandwrittenItem key={item.text}>
           <TodoListItem
-            icon={<></>}
+            icon={<>{item.importance&&(<BsStars/>)}</>}
             item={item.text}
             status={item.status}
-            note={<small className="float">Importance: {item.importance}</small>}
+            note={<small className="float">{item.note}</small>}
             handleStatus={() => props.handleStatus(item)}
             actionButton={
               <span className="delete bullet-icons hover-pointer">

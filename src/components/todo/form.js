@@ -3,7 +3,6 @@ import { Row, Col, Button } from "react-bootstrap";
 import { HiCheck, HiX } from "react-icons/all";
 import { useForm } from "react-hook-form";
 
-// import useFormHandler from "../../hooks/form.js";
 import { HandwrittenItem } from "../designElements/HandwrittenItem/index.js";
 import { TodoListItem } from "../designElements/ListItem/index";
 

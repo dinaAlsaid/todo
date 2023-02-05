@@ -1,5 +1,8 @@
 import axios from "axios";
-
+/**
+ * NOT USED ANYWHERE
+ * 
+ */
 const useAjax = () => {
   const url = process.env.REACT_APP_API;
 

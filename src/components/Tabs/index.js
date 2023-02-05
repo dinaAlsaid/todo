@@ -11,6 +11,7 @@ const Tabs = (props) => {
     width: "80vh",
     display: "flex",
     flexWarp: "wrap",
+    
   };
 
   return (

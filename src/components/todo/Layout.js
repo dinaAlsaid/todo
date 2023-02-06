@@ -1,14 +1,13 @@
 import React from "react";
-import ToDo from "../../views/todo-connected";
-// import Header from "./Header";
-// import { Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import ToDo from "views/todoList";
 
 const Layout = () => {
   return (
     <>
-      {/* <Header /> */}
-      
-      <ToDo />
+      <Container>
+        <ToDo />
+      </Container>
     </>
   );
 };

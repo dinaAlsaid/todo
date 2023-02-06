@@ -3,8 +3,8 @@ import { Row, Col, Button } from "react-bootstrap";
 import { HiCheck, HiX } from "react-icons/all";
 import { useForm } from "react-hook-form";
 
-import { HandwrittenItem } from "../designElements/HandwrittenItem/index.js";
-import { TodoListItem } from "../designElements/ListItem/index";
+import { HandwrittenItem } from "components/designElements/HandwrittenItem/index.js";
+import { TodoListItem } from "components/designElements/ListItem/index";
 
 function TodoForm(props) {
   return (

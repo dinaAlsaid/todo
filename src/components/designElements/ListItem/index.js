@@ -5,11 +5,11 @@ import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
   const getStatusIcon = (status) => {
     switch (status) {
-      case true:
+      case "done":
         return <BsCircleFill />;
-      case "inProgress":
+      case "doing":
         return <BsCircleHalf />;
-      case false:
+      case "todo":
         return <BsCircle />;
       default:
         return <></>;
@@ -19,7 +19,7 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
   return (
     <li>
       <Row>
-        <Col sm={1} md={1}>
+        <Col sm={1} md={1} >
           {icon}
         </Col>
         <Col className="hover-pointer" onClick={handleStatus}>

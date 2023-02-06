@@ -1,14 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router";
-// import { Helmet } from "react-helmet";
 
-import LoginProvider from "./context/login.js";
-import SettingsProvider from "./context/settings.js";
-import Layout from "./components/todo/Layout.js";
-import Login from "./views/login";
+import SettingsProvider from "context/settings.js";
+import Layout from "components/todo/Layout.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./app.scss";
+import "app.scss";
 
 export default function App() {
   return (
@@ -23,14 +20,12 @@ export default function App() {
         />
       </Helmet> */}
 
-      <LoginProvider>
         <SettingsProvider>
           <Routes>
             <Route path="/" element={<Layout />} />
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
           </Routes>
         </SettingsProvider>
-      </LoginProvider>
     </>
   );
 }

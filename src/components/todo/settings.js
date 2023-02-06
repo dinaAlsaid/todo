@@ -1,27 +1,17 @@
 import React, { useContext } from "react";
 import { Form, Col, Row, Container } from "react-bootstrap";
-import { SettingsContext } from "../../context/settings.js";
+import { SettingsContext } from "context/settings.js";
+import SideNote from "components/designElements/SideNote/index";
 
-function Settings() {
+function Settings({show,onClose}) {
   const context = useContext(SettingsContext);
 
   return (
+    <SideNote show={show} onClose={onClose}>
+
     <Container>
       <Form>
-        <Row>
-          {/* <Col>
-            <Form.Label>
-              <span>Number of notes per page</span>
-            </Form.Label>
-            <Form.Control
-              type="range"
-              defaultValue="3"
-              min="3"
-              max="7"
-              name="numberOfNotes"
-              onChange={context.setNumOfNotes}
-            />
-          </Col> */}
+        {/* <Row>
           <Col>
             <Form.Check
               type="switch"
@@ -39,9 +29,11 @@ function Settings() {
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult stuff" value="desc" />
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Easy stuff" value="asce" />
           </Col>
-        </Row>
+        </Row> */}
       </Form>
     </Container>
+    </SideNote>
+
   );
 }
 export default Settings;

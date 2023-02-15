@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useFilter = (storageData) => {
+  const [FilteredData, setFilteredData] = useState(storageData);
+  useEffect(() => {
+    setFilteredData(storageData);
+  }, [storageData]);
 
-    const [FilteredData, setFilteredData] = useState(storageData)
-    const _filter=()=>{}
-    const _sort=(direction="ascend")=>{}
+  const _filter = () => {};
+  const _sort = (direction = "ascend") => {};
 
-    return {_filter,_sort,FilteredData};
-  };
-  
-  
+  return { _filter, _sort, FilteredData };
+};

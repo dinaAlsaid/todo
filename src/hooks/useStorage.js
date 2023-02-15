@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { v4 } from "uuid";
 
 export const useStorage = (online = false) => {
   const [data, setData] = useState([]);
@@ -15,10 +16,10 @@ export const useStorage = (online = false) => {
         // });
         // res=res.data;
       } else {
-        res = localStorage.getItem("todoList");
+        res = JSON.parse(localStorage.getItem("todoList"));
       }
       if (res && res.length) {
-        setData([...res]);
+        setData(res);
       }
     } catch (err) {
       console.error(err.message);
@@ -40,12 +41,17 @@ export const useStorage = (online = false) => {
         //   })
         // res=res.data;
       } else {
-        let list = localStorage.getItem("todoList");
-        res = list.push(item);
-        localStorage.setItem("todoList", list);
-      }
-      setData([...data, ]);
+        res = JSON.parse(localStorage.getItem("todoList"));
 
+        if (res && res.length) {
+          res.push(item);
+        } else {
+          item.id = v4();
+          res = [item];
+        }
+        localStorage.setItem("todoList", JSON.stringify(res));
+      }
+      setData(res);
     } catch (err) {
       console.error(err);
     }
@@ -54,33 +60,37 @@ export const useStorage = (online = false) => {
   //PUT
   const _toggleComplete = (item) => {
     try {
-      if (item._id) {
-        switch (item.status) {
-          case "todo":
-            item.status = "doing";
-            break;
-          case "doing":
-            item.status = "done";
-            break;
-          case "done":
-          default:
-            item.status = "todo";
-            break;
-        }
-        if (online === true) {
-          // let fullurl = `${url}/${item._id}`;
-          // return axios({
-          //   url: fullurl,
-          //   method: "put",
-          //   mode: "cors",
-          //   cache: "no-cache",
-          //   headers: { "Content-Type": "application/json" },
-          //   data: item,
-          // }).then((savedItem) => savedItem.data);
-        } else {
-        }
-        setData(data.map((listItem) => (listItem._id === item._id ? item : listItem)));
+      let res = [];
+      switch (item.status) {
+        case "todo":
+          item.status = "doing";
+          break;
+        case "doing":
+          item.status = "done";
+          break;
+        case "done":
+        default:
+          item.status = "todo";
+          break;
+      }
+      if (online === true) {
+        // let fullurl = `${url}/${item._id}`;
+        // return axios({
+        //   url: fullurl,
+        //   method: "put",
+        //   mode: "cors",
+        //   cache: "no-cache",
+        //   headers: { "Content-Type": "application/json" },
+        //   data: item,
+        // }).then((savedItem) => savedItem.data);
+      } else {
+        let list = JSON.parse(localStorage.getItem("todoList"));
+        res = [...list.map((listItem) => (listItem.id === item.id ? item : listItem))];
+        localStorage.setItem("todoList", JSON.stringify(res));
+      }
 
+      if (res && res.length) {
+        setData(res);
       }
     } catch (err) {
       console.error(err);
@@ -90,22 +100,29 @@ export const useStorage = (online = false) => {
   //DELETE
   const _deleteItem = (item) => {
     try {
+      let res = [];
       if (online === true) {
-        if (item._id) {
-          // let fullurl = `${url}/${item._id}`;
-          // return axios({
-          //   url: fullurl,
-          //   method: "delete",
-          //   mode: "cors",
-          //   cache: "no-cache",
-          //   headers: { "Content-Type": "application/json" },
-          //   data: item,
-          // }).then((savedItem) => savedItem.data);
-        }
+        // if (item._id) {
+        // let fullurl = `${url}/${item._id}`;
+        // return axios({
+        //   url: fullurl,
+        //   method: "delete",
+        //   mode: "cors",
+        //   cache: "no-cache",
+        //   headers: { "Content-Type": "application/json" },
+        //   data: item,
+        // }).then((savedItem) => savedItem.data);
+        // }
       } else {
+        let list = JSON.parse(localStorage.getItem("todoList"));
+        res = [...list.filter((listItem) => listItem.id !== item.id)];
+        localStorage.setItem("todoList", JSON.stringify(res));
       }
-      setData(data.filter((listItem) => listItem._id !== item._id));
-
+      if (res && res.length) {
+        setData(res);
+      } else {
+        setData([]);
+      }
     } catch (err) {
       console.error(err);
     }

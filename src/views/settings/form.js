@@ -1,15 +1,10 @@
-import React, { useContext } from "react";
-import { Form, Col, Row, Container } from "react-bootstrap";
-import { SettingsContext } from "context/settings.js";
-import SideNote from "components/designElements/SideNote/index";
+import React from "react";
+import { Form } from "react-bootstrap";
 
-function Settings({show,onClose}) {
-  const context = useContext(SettingsContext);
+function SettingsForm() {
 
   return (
-    <SideNote show={show} onClose={onClose}>
 
-    <Container>
       <Form>
         {/* <Row>
           <Col>
@@ -31,9 +26,7 @@ function Settings({show,onClose}) {
           </Col>
         </Row> */}
       </Form>
-    </Container>
-    </SideNote>
 
   );
 }
-export default Settings;
+export default SettingsForm;

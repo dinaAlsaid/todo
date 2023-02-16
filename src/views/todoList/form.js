@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button,Form } from "react-bootstrap";
 import { HiCheck, HiX } from "react-icons/all";
 import { useForm } from "react-hook-form";
 
@@ -70,7 +70,13 @@ const AddItemForm = (props) => {
 
         <Col md="auto">
           <Row>
-            <input type="checkbox" name="importance" {...register("importance")} />
+          <Form.Check 
+            type="checkbox"
+            label="importance"
+            name="importance" 
+            {...register("importance")}
+          />
+            {/* <input type="checkbox" name="importance" {...register("importance")} /> */}
           </Row>
         </Col>
 

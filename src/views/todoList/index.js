@@ -5,7 +5,7 @@ import { BsFunnel } from "react-icons/all";
 import sort from "Util/sort";
 import TodoForm from "./form.js";
 import TodoList from "components/todo/list.js";
-import Settings from "components/todo/settings.js";
+import Settings from "views/settings";
 import Tabs from "components/Tabs/index";
 import { PageTitle } from "components/designElements/PageTitle/index.js";
 import { NoteBookPage } from "components/designElements/noteBookPage/index";

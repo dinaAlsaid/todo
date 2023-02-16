@@ -1,12 +1,14 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+import React,{useContext} from "react";
+import { Form,Row,Col } from "react-bootstrap";
+import {SettingsContext} from "context/settings";
 
 function SettingsForm() {
+    const context = useContext(SettingsContext);
 
   return (
 
       <Form>
-        {/* <Row>
+        <Row>
           <Col>
             <Form.Check
               type="switch"
@@ -24,7 +26,7 @@ function SettingsForm() {
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult stuff" value="desc" />
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Easy stuff" value="asce" />
           </Col>
-        </Row> */}
+        </Row>
       </Form>
 
   );

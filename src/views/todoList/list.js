@@ -1,6 +1,6 @@
 import React from "react";
-import { HandwrittenItem } from "../designElements/HandwrittenItem/index";
-import { TodoListItem } from "../designElements/ListItem/index";
+import { HandwrittenItem } from "../../components/designElements/HandwrittenItem/index";
+import { TodoListItem } from "../../components/designElements/ListItem/index";
 import { HiPlus, HiX,BsStars } from "react-icons/all";
 
 function TodoList(props) {

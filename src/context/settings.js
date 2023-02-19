@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState,createContext } from 'react';
 
-export const SettingsContext = React.createContext();
+export const SettingsContext = createContext();
 
 function SettingsProvider(props) {
 

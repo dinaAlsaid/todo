@@ -1,8 +1,7 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect,  useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { BsFunnel } from "react-icons/all";
 
-import sort from "Util/sort";
 import TodoForm from "./form.js";
 import TodoList from "views/todoList/list.js";
 import Settings from "views/settings";
@@ -10,20 +9,17 @@ import Tabs from "components/Tabs/index";
 import { PageTitle } from "components/designElements/PageTitle/index.js";
 import { NoteBookPage } from "components/designElements/noteBookPage/index";
 import { TodoListContainer } from "components/designElements/TodoListContainer/index";
-import { SettingsContext } from "context/settings.js";
 
 import "components/designElements/commonStyles.scss";
 import { useStorage } from "hooks/useStorage.js";
 import { useFilter } from "hooks/useFilter.js";
 
 const ToDo = () => {
-  // const contextSettings = useContext(SettingsContext);
-  // const [shownItems, setShownItems] = useState([]);
   const [showSettings, setShowSettings] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
 
   const { _addItem, _getTodoItems, _toggleComplete, _deleteItem, data } = useStorage(false);
-  const { _filter, _sort ,FilteredData} = useFilter(data);
+  const {FilteredData} = useFilter(data);
 
   useEffect(() => {
     const getAllItems = async () => {
@@ -32,11 +28,6 @@ const ToDo = () => {
 
     getAllItems();
   }, []); //eslint-disable-line
-
-  // useEffect(() => {
-    // setShownItems(sortList(filterCompleted([...data])));
-  // }, [data, contextSettings.showCompleted, contextSettings.sorted]); //eslint-disable-line
-
 
 
   //#region

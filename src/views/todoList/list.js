@@ -1,15 +1,15 @@
 import React from "react";
 import { HandwrittenItem } from "../../components/designElements/HandwrittenItem/index";
 import { TodoListItem } from "../../components/designElements/ListItem/index";
-import { HiPlus, HiX,BsStars } from "react-icons/all";
+import { HiPlus, HiX, BsStars } from "react-icons/all";
 
 function TodoList(props) {
   return (
     <>
-      {props.list.map((item) => (
-        <HandwrittenItem key={item.text}>
+      {props.list.map((item, index) => (
+        <HandwrittenItem key={`${item.text}-${index}`}>
           <TodoListItem
-            icon={<>{item.importance&&(<BsStars/>)}</>}
+            icon={<>{item.importance && <BsStars />}</>}
             item={item.text}
             status={item.status}
             note={<small className="float">{item.note}</small>}

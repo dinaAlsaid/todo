@@ -17,7 +17,7 @@ import { useStorage } from "hooks/useStorage.js";
 import { useFilter } from "hooks/useFilter.js";
 
 const ToDo = () => {
-  const contextSettings = useContext(SettingsContext);
+  // const contextSettings = useContext(SettingsContext);
   // const [shownItems, setShownItems] = useState([]);
   const [showSettings, setShowSettings] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -37,31 +37,7 @@ const ToDo = () => {
     // setShownItems(sortList(filterCompleted([...data])));
   // }, [data, contextSettings.showCompleted, contextSettings.sorted]); //eslint-disable-line
 
-  // filters
-  // const filterCompleted = (arr) => {
-  //   return arr.filter((item) => {
-  //     //eslint-disable-line
 
-  //     if (!contextSettings.showCompleted) {
-  //       return item;
-  //     } else {
-  //       if (item.complete === false) {
-  //         return item;
-  //       }
-  //     }
-  //   });
-  // };
-
-  // // TODO: fix sort
-  // const sortList = (arr) => {
-  //   if (contextSettings.sorted === "None") {
-  //     return arr;
-  //   } else if (contextSettings.sorted === "desc") {
-  //     return arr.sort(sort.descend);
-  //   } else if (contextSettings.sorted === "asce") {
-  //     return arr.sort(sort.ascend);
-  //   }
-  // };
 
   //#region
   const addItem = async (item) => {

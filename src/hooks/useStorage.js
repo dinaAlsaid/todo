@@ -43,10 +43,10 @@ export const useStorage = (online = false) => {
       } else {
         res = JSON.parse(localStorage.getItem("todoList"));
 
+        item.id = v4();
         if (res && res.length) {
           res.push(item);
         } else {
-          item.id = v4();
           res = [item];
         }
         localStorage.setItem("todoList", JSON.stringify(res));

@@ -1,10 +1,13 @@
 import React from "react";
-import { Row, Col, Button,Form } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 import { HiCheck, HiX } from "react-icons/all";
 import { useForm } from "react-hook-form";
 
 import { HandwrittenItem } from "components/designElements/HandwrittenItem/index.js";
 import { TodoListItem } from "components/designElements/ListItem/index";
+import RHFText from "components/RHFControls/RHFText";
+import RHFCheck from "components/RHFControls/RHFCheck";
+import RHFDatePicker from "components/RHFControls/RHFDatePicker";
 
 function TodoForm(props) {
   return (
@@ -30,51 +33,21 @@ function TodoForm(props) {
 export default TodoForm;
 
 const AddItemForm = (props) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const RHF = useForm();
 
+  const submit = async (data) => {
+    await props.handleSubmit(data)
+  };
   return (
-    <form onSubmit={handleSubmit(props.handleSubmit)}>
+    <form onSubmit={RHF.handleSubmit(submit)}>
       <Row>
-        <Col md="auto">
-          <Row>
-            <input
-              type="text"
-              autoComplete="off"
-              name="text"
-              placeholder="Add New Item"
-              {...register("text", { required: { value: true, message: "what is the task???" } })}
-            />
-          </Row>
-
-          <Row>
-            <span className="text-danger">{errors.text?.message}</span>
-          </Row>
-        </Col>
+        <RHFText RHF={RHF} name="task" placeholder="Add New Item" required={true} />
+        <RHFText RHF={RHF} type="textarea" name="note" placeholder="note" />
+        <RHFDatePicker RHF={RHF} name="due" />
 
         <Col md="auto">
           <Row>
-            <input type="textarea" name="note" placeholder="note" autoComplete="off" {...register("note")} />
-          </Row>
-        </Col>
-
-        <Col md="auto">
-          <Row>
-            <input type="date" name="due" {...register("due")} />
-          </Row>
-        </Col>
-
-        <Col md="auto">
-          <Row>
-          <Form.Check 
-            type="checkbox"
-            label="importance"
-            name="importance" 
-            {...register("importance")}
-          />
+            <RHFCheck RHF={RHF} name="importance" label="importance"  />
           </Row>
         </Col>
 

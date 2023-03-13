@@ -7,10 +7,10 @@ function TodoList(props) {
   return (
     <>
       {props.list.map((item, index) => (
-        <HandwrittenItem key={`${item.text}-${index}`}>
+        <HandwrittenItem key={`${item.task}-${index}`}>
           <TodoListItem
             icon={<>{item.importance && <BsStars />}</>}
-            item={item.text}
+            item={item.task}
             status={item.status}
             note={<small className="float">{item.note}</small>}
             handleStatus={() => props.handleStatus(item)}

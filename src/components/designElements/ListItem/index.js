@@ -1,5 +1,5 @@
+import { Grid } from "@mui/material";
 import React from "react";
-import { Row, Col } from "react-bootstrap";
 import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
 
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
@@ -18,11 +18,11 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
 
   return (
     <li>
-      <Row>
-        <Col sm={1} md={1}>
+      <Grid>
+        <Grid item sm={1} md={1}>
           {icon}
-        </Col>
-        <Col className="hover-pointer" onClick={handleStatus}>
+        </Grid>
+        <Grid item className="hover-pointer" onClick={handleStatus}>
           <span className="bullet-icons small m-2">{getStatusIcon(status)}</span>
           <span className="task">{item}</span>
           {note && (
@@ -30,11 +30,11 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
               <li className="note">{note}</li>
             </ul>
           )}
-        </Col>
-        <Col sm={1} md={1} onClick={handleAction}>
+        </Grid>
+        <Grid item sm={1} md={1} onClick={handleAction}>
           {actionButton}
-        </Col>
-      </Row>
+        </Grid>
+      </Grid>
     </li>
   );
 };

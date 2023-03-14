@@ -1,5 +1,7 @@
 import React from "react";
-import { Row, Col, Button, Form } from "react-bootstrap";
+// import { Row, Col, Button, Form } from "react-bootstrap";
+import { Grid, Button, Box } from "@mui/material";
+
 import { HiCheck, HiX } from "react-icons/all";
 import { useForm } from "react-hook-form";
 
@@ -36,27 +38,34 @@ const AddItemForm = (props) => {
   const RHF = useForm();
 
   const submit = async (data) => {
-    await props.handleSubmit(data)
+    await props.handleSubmit(data);
   };
   return (
-    <form onSubmit={RHF.handleSubmit(submit)}>
-      <Row>
-        <RHFText RHF={RHF} name="task" placeholder="Add New Item" required={true} />
-        <RHFText RHF={RHF} type="textarea" name="note" placeholder="note" />
-        <RHFDatePicker RHF={RHF} name="due" />
+    <Box component="form" onSubmit={RHF.handleSubmit(submit)}>
+      <Grid>
+        <Grid item>
+          <RHFText RHF={RHF} name="task" placeholder="Add New Item" required={true} />
+        </Grid>
 
-        <Col md="auto">
-          <Row>
-            <RHFCheck RHF={RHF} name="importance" label="importance"  />
-          </Row>
-        </Col>
+        <Grid item>
+          <RHFText RHF={RHF} type="textarea" name="note" placeholder="note" />
+        </Grid>
 
-        <Col>
+        <Grid item>
+          <RHFDatePicker RHF={RHF} name="due" />
+        </Grid>
+        
+        <Grid item>
+          <RHFCheck RHF={RHF} name="importance" label="importance" />
+        </Grid>
+
+        <Grid item>
           <Button variant="link" className="button-icon" type="submit">
             <HiCheck />
           </Button>
-        </Col>
-      </Row>
-    </form>
+        </Grid>
+
+      </Grid>
+    </Box>
   );
 };

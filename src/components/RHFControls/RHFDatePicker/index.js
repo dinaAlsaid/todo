@@ -1,6 +1,5 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { Row, Col } from "react-bootstrap";
 
 const RHFDatePicker = ({ RHF, name, required, rules }) => {
   return (

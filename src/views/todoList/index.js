@@ -1,5 +1,6 @@
 import React, { useEffect,  useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Grid } from "@mui/material";
+
 import { BsFunnel } from "react-icons/all";
 
 import TodoForm from "./form.js";
@@ -62,14 +63,14 @@ const ToDo = () => {
       <NoteBookPage>
         <Tabs data={tabsArray} addTab={addTab} />
         <Settings show={showSettings} onClose={clickTab} />
-        <Container>
-          <Row>
-            <Col>
+        <Grid>
+          <Grid item>
+            <Grid item>
               <PageTitle title="Todo List" />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid item>
               <TodoListContainer>
                 <TodoList
                   onAddItemClick={() => {
@@ -89,8 +90,8 @@ const ToDo = () => {
                   />
                 )}
               </TodoListContainer>
-            </Col>
-          </Row>
+            </Grid>
+          </Grid>
 
           {/* <Pages
           items={shownItems}
@@ -98,7 +99,7 @@ const ToDo = () => {
           activePage={activePage}
           setActivePage={setActivePage}
         /> */}
-        </Container>
+        </Grid>
       </NoteBookPage>
     </>
   );

@@ -4,8 +4,9 @@ import { Routes, Route } from "react-router";
 import SettingsProvider from "context/settings.js";
 import Layout from "components/Layout";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "app.scss";
+import { ThemeProvider } from "@mui/material";
+import { initTheme } from "Theme";
 
 export default function App() {
   return (
@@ -21,10 +22,12 @@ export default function App() {
       </Helmet> */}
 
       <SettingsProvider>
-        <Routes>
-          <Route path="/" element={<Layout />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-        </Routes>
+        <ThemeProvider theme={initTheme()}>
+          <Routes>
+            <Route path="/" element={<Layout />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+          </Routes>
+        </ThemeProvider>
       </SettingsProvider>
     </>
   );

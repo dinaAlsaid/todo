@@ -1,5 +1,9 @@
-import React from "react";
+import { List } from "@mui/material";
 
 export const TodoListContainer = ({ children }) => {
-  return <ul className="list-style-type-none">{children}</ul>;
+  return (
+    <List sx={{ width: "100%" }}>
+      {children}
+    </List>
+  );
 };

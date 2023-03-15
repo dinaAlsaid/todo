@@ -1,6 +1,5 @@
-import { Grid } from "@mui/material";
-import React from "react";
 import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
+import { ListItem, ListItemButton, ListItemIcon, ListItemText,ListItemAvatar } from "@mui/material";
 
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
   const getStatusIcon = (status) => {
@@ -17,24 +16,13 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
   };
 
   return (
-    <li>
-      <Grid>
-        <Grid item sm={1} md={1}>
-          {icon}
-        </Grid>
-        <Grid item className="hover-pointer" onClick={handleStatus}>
-          <span className="bullet-icons small m-2">{getStatusIcon(status)}</span>
-          <span className="task">{item}</span>
-          {note && (
-            <ul>
-              <li className="note">{note}</li>
-            </ul>
-          )}
-        </Grid>
-        <Grid item sm={1} md={1} onClick={handleAction}>
-          {actionButton}
-        </Grid>
-      </Grid>
-    </li>
+    <ListItem>
+      <ListItemAvatar>{icon}</ListItemAvatar>
+      <ListItemIcon>{getStatusIcon(status)}</ListItemIcon>
+      <ListItemText secondary={note} onClick={handleStatus}>
+        {item}
+      </ListItemText>
+      <ListItemButton onClick={handleAction}>{actionButton}</ListItemButton>
+    </ListItem>
   );
 };

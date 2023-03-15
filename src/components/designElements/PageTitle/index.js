@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
+import { styled } from "@mui/material/styles";
 
-export const PageTitle = ({title,style}) => {
+const StyledH2 = styled("h2")(({ theme }) => ({
+  fontFamily: "alagambe",
+  fontSize: "xxx-large",
+  textAlign: "center",
+  textTransform: "capitalize",
+}));
 
-    const titleStyle ={
-        fontFamily:"alagambe",
-        fontSize:"xxx-large",
-        textAlign:"center",
-        textTransform:"capitalize",
-        ...style,
-    }
-  return (
-    <h2 style={titleStyle} className="text">{title}</h2>
-  )
-}
+export const PageTitle = ({ title }) => {
+  return <StyledH2 className="text">{title}</StyledH2>;
+};

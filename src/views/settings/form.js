@@ -21,7 +21,8 @@ function SettingsForm() {
 
         <Grid item>
           <Grid item>
-            {/* <Form.Label>What to do first</Form.Label>
+            <>What to do first</>
+            {/* 
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Doesn't matter" value={0} />
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Difficult stuff" value={-1} />
             <Form.Check onClick={context.sortBy} name="sort" type="radio" label="Easy stuff" value={1} /> */}

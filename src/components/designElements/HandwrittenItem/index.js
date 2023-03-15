@@ -1,23 +1,25 @@
-import React from "react";
-import "./styles.scss";
 
-export const HandwrittenItem = ({ style, className, children }) => {
-  const itemStyles = {
+import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
+
+const StyledText = styled(Box)(({ theme }) => ({
+  "& *": {
     fontFamily: "little sunshine",
-    fontSize: "1.5rem",
+    fontSize: "1.2rem",
     lineHeight: "initial",
     textTransform: "lowercase",
     letterSpacing: ".35rem",
-    ...style,
-  };
-  return (
-    <div style={itemStyles} className={`listItem todo text ${className}`}>
-      {children}
-    </div>
-  );
-};
+  },
+  "&.todo": {
+    ".delete": {
+      "&:hover": {
+        color: "#db4646",
+        opacity: 0.5,
+      },
+    },
+  },
+}));
 
-HandwrittenItem.defaultProps = {
-  className: "",
-  style:{}
+export const HandwrittenItem = ({ children }) => {
+  return <StyledText className={`listItem todo text `}>{children}</StyledText>;
 };

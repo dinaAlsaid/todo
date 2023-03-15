@@ -1,31 +1,35 @@
 import React from "react";
-import "./styles.scss";
-import {HiChevronLeft} from "react-icons/all"
+import { HiChevronLeft } from "react-icons/all";
 
-const SideNote = ({ children, show,onClose,style }) => {
-  const sideNotestyle = {
-    position: "absolute",
-    left: "100%",
-    transform: "rotate(-2deg)",
-    height: "30vw",
-    width: "19vw",
-    visibility:show?"visible":"hidden",//to load font 
-    ...style,
-  };
+import { styled } from "@mui/material/styles";
+import { Box } from "@mui/material";
+
+const TabsContainer = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  left: "100%",
+  transform: "rotate(-2deg)",
+  height: "30vw",
+  width: "19vw",
+  fontFamily: "ReenieBeanie",
+  textTransform: "lowercase",
+  fontSize: "x-large",
+}));
+
+const SideNote = ({ children, show, onClose, style }) => {
+
   return (
     <>
-      {/* {show && ( */}
-
-        <div className="paper side-note" style={sideNotestyle}>
-          <div onClick={onClose} className="hover-pointer bullet-icons"><HiChevronLeft/></div>
+      {show && (
+        <TabsContainer className="paper side-note" >
+          <div onClick={onClose}>
+            <HiChevronLeft />
+          </div>
           {children}
-        </div>
-      {/* )} */}
+        </TabsContainer>
+      )}
     </>
   );
 };
 
 export default SideNote;
-SideNote.defaultProps={
-  style:{}
-}
+

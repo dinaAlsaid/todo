@@ -42,7 +42,6 @@ const AddItemForm = (props) => {
   };
   return (
     <Box component="form" onSubmit={RHF.handleSubmit(submit)}>
-      <Grid>
         <Grid item>
           <RHFText RHF={RHF} name="task" placeholder="Add New Item" required={true} />
         </Grid>
@@ -65,7 +64,6 @@ const AddItemForm = (props) => {
           </Button>
         </Grid>
 
-      </Grid>
     </Box>
   );
 };

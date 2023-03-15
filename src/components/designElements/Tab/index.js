@@ -8,6 +8,7 @@ const StyledTab = styled(Box)(({ theme }) => ({
   height: "fit-content",
   // width: 100,
   minWidth:50,
+  maxWidth:100,
   padding: 5,
   boxSizing: "border-box",
   display: "inline-block",

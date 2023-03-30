@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { InputUnstyled } from "@mui/base";
 
 const RHFText = ({ RHF, type, name, required, placeholder, rules, defaultValue }) => {
@@ -21,7 +21,7 @@ const RHFText = ({ RHF, type, name, required, placeholder, rules, defaultValue }
             placeholder={placeholder}
             {...field}
           />
-          <Box className="text-danger small">{error?.message}</Box>
+          <Box><Typography>{error?.message}</Typography></Box>
         </>
       )}
     />

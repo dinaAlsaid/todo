@@ -36,22 +36,20 @@
   }
 }
 
-.listItem.text.todo {
-  input {
+input {
 
-    &[type="text"],&[type="textarea"],&[type="date"] {
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid grey;
-      text-transform: uppercase;
-      
-      &:focus-visible {
-        outline: none;
-      }
-      &::placeholder {
-        opacity: 0.6;
-      }
+  &[type="text"],&[type="textarea"],&[type="date"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid grey;
+    text-transform: uppercase;
+    
+    &:focus-visible {
+      outline: none;
     }
-
+    &::placeholder {
+      opacity: 0.6;
+    }
   }
+
 }

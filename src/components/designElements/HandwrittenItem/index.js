@@ -1,4 +1,3 @@
-
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
 
@@ -9,14 +8,6 @@ const StyledText = styled(Box)(({ theme }) => ({
     lineHeight: "initial",
     textTransform: "lowercase",
     letterSpacing: ".35rem",
-  },
-  "&.todo": {
-    ".delete": {
-      "&:hover": {
-        color: "#db4646",
-        opacity: 0.5,
-      },
-    },
   },
 }));
 

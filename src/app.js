@@ -2,13 +2,13 @@ import React from "react";
 import { Routes, Route } from "react-router";
 
 import SettingsProvider from "context/settings.js";
+import ThemeProvider from "context/ThemeContext";
+
 import Layout from "components/Layout";
 
 import "app.scss";
-import { ThemeProvider } from "@mui/material";
-import { initTheme } from "Theme";
 
-export default function App() {
+const App = () => {
   return (
     <>
       {/* <Helmet>
@@ -22,7 +22,7 @@ export default function App() {
       </Helmet> */}
 
       <SettingsProvider>
-        <ThemeProvider theme={initTheme()}>
+        <ThemeProvider>
           <Routes>
             <Route path="/" element={<Layout />} />
             {/* <Route path="/login" element={<Login />} /> */}
@@ -31,4 +31,5 @@ export default function App() {
       </SettingsProvider>
     </>
   );
-}
+};
+export default App;

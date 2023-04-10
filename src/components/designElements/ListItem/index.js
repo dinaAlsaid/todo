@@ -1,5 +1,14 @@
 import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
-import { ListItem, ListItemButton, ListItemIcon, ListItemText,ListItemAvatar } from "@mui/material";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListItemAvatar,
+  Typography,
+  Box,
+  IconButton,
+} from "@mui/material";
 
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
   const getStatusIcon = (status) => {
@@ -16,13 +25,20 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
   };
 
   return (
-    <ListItem>
+    <ListItem disablePadding secondaryAction={<IconButton onClick={handleAction}>{actionButton}</IconButton>}>
       <ListItemAvatar>{icon}</ListItemAvatar>
-      <ListItemIcon>{getStatusIcon(status)}</ListItemIcon>
-      <ListItemText secondary={note} onClick={handleStatus}>
-        {item}
-      </ListItemText>
-      <ListItemButton onClick={handleAction}>{actionButton}</ListItemButton>
+      <ListItemButton onClick={handleStatus}>
+        <ListItemIcon>{getStatusIcon(status)}</ListItemIcon>
+        <ListItemText
+          secondary={
+            <Box>
+              <Typography variant="handwritten">{note}</Typography>
+            </Box>
+          }
+        >
+          <Typography variant="handwritten">{item}</Typography>
+        </ListItemText>
+      </ListItemButton>
     </ListItem>
   );
 };

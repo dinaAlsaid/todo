@@ -26,8 +26,8 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
 
   return (
     <ListItem disablePadding secondaryAction={<IconButton onClick={handleAction}>{actionButton}</IconButton>}>
-      <ListItemAvatar>{icon}</ListItemAvatar>
       <ListItemButton onClick={handleStatus}>
+      <ListItemAvatar>{icon}</ListItemAvatar>
         <ListItemIcon>{getStatusIcon(status)}</ListItemIcon>
         <ListItemText
           secondary={

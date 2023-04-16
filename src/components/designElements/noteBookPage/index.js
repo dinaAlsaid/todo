@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 
-const StyledPage = styled(Box)(({ theme }) => ({
+const StyledPage = styled(Paper)(({ theme }) => ({
   transform: "rotate(1deg)",
   borderRadius: "1px 3px 3px 0px",
   height: "70vw",
@@ -10,7 +10,7 @@ const StyledPage = styled(Box)(({ theme }) => ({
 }));
 
 export const NoteBookPage = ({ children }) => {
-  return <StyledPage className="paper noteBookPage">{children}</StyledPage>;
+  return <StyledPage >{children}</StyledPage>;
 };
 
 NoteBookPage.defaultProps = {

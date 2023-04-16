@@ -1,22 +1,44 @@
-import { useState, createContext } from "react";
-import { initTheme } from "context/ThemeContext/BaseTheme";
-import { deepmerge } from "@mui/utils";
+import { useState, createContext, useMemo } from "react";
+import { getTheme } from "context/ThemeContext/BaseTheme";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material";
+import { deepmerge } from "@mui/utils";
 
 export const ThemeContext = createContext();
 
 const ThemeProvider = (props) => {
-  const [currentTheme, setCurrentTheme] = useState(initTheme());
+  const [mode, setMode] = useState("light");
+  const [userOptions, setUserOptions] = useState(null);
+  const currentTheme = useMemo(() => getTheme(mode, userOptions), [mode, userOptions]);
 
-  const changeTheme = (userOptions) => {
-    let newTheme = deepmerge(currentTheme, userOptions);
-    localStorage.setItem("journalTheme", JSON.stringify(userOptions));
-    setCurrentTheme(createTheme(newTheme));
+  const toggleMode = () => {
+    if (currentTheme.palette.mode === "dark") {
+      setMode("light");
+    } else {
+      setMode("dark");
+    }
   };
 
+  const changecolor = (key, color) => {
+    setUserOptions(
+      deepmerge({...userOptions}, {
+        palette: {
+          [key]: {
+            main: color,
+          },
+        },
+      })
+    );
+  };
+  // const changeTheme = (userOptions) => {
+  //   localStorage.setItem("journalTheme", JSON.stringify(userOptions));
+  //   setCurrentTheme(createTheme(currentTheme,userOptions));
+  // };
+
   const state = {
-    changeTheme
+    // changeTheme,
+    toggleMode,
+    changecolor,
   };
 
   return (

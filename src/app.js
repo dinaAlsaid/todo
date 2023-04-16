@@ -7,6 +7,7 @@ import ThemeProvider from "context/ThemeContext";
 import Layout from "components/Layout";
 
 import "app.scss";
+import { CssBaseline } from "@mui/material";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
 
       <SettingsProvider>
         <ThemeProvider>
+          <CssBaseline/>
           <Routes>
             <Route path="/" element={<Layout />} />
             {/* <Route path="/login" element={<Login />} /> */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import { Box, Paper } from "@mui/material";
+import {  Paper } from "@mui/material";
 
 const StyledPage = styled(Paper)(({ theme }) => ({
   transform: "rotate(1deg)",

@@ -1,24 +1,48 @@
 import React, { useContext } from "react";
-import { Container, Fab, useTheme } from "@mui/material";
+import { Container, Fab, Typography, useTheme, Box } from "@mui/material";
 import ToDo from "views/todoList";
-import { BsSun, BsMoon } from "react-icons/all";
+import { BsSun, BsMoon, BsPalette } from "react-icons/all";
 import { ThemeContext } from "context/ThemeContext";
+import PaletteForm from "context/ThemeContext/PaletteForm";
+import SideNote from "components/designElements/SideNote";
+import { useState } from "react";
 
 const Layout = () => {
-  const { toggleMode,changecolor } = useContext(ThemeContext);
+  const { toggleMode } = useContext(ThemeContext);
   const theme = useTheme();
+
+  const [showForm, setShow] = useState(false);
   return (
     <>
-      <Fab size="small" variant="circular" onClick={toggleMode}>
-        {theme.palette.mode === "dark" && <BsSun />}
-        {theme.palette.mode === "light" && <BsMoon />}
-      </Fab>
-      <Fab size="small" variant="circular" sx={{backgroundColor:theme.palette.primary.main}} onClick={()=>changecolor("primary","#51ffd1")}>
-        P
-      </Fab>
-      <Fab size="small" variant="circular" sx={{backgroundColor:theme.palette.secondary.main}} onClick={()=>changecolor("secondary","#ceab2f")}>
-        s
-      </Fab>
+      <Box>
+        <Fab onClick={() => setShow(true)}>
+          <BsPalette />
+        </Fab>
+        <SideNote show={showForm} onClose={() => setShow(false)}>
+          <Fab size="small" variant="circular" onClick={toggleMode}>
+            {theme.palette.mode === "dark" && <BsSun />}
+            {theme.palette.mode === "light" && <BsMoon />}
+          </Fab>
+          <PaletteForm />
+        </SideNote>
+      </Box>
+      <Box sx={{pl:50}}>
+        <Typography variant="h3" color={theme.palette.primary.main}>
+          primary
+        </Typography>
+        <Typography variant="h3" color={theme.palette.secondary.main}>
+          secondary
+        </Typography>
+        <Typography variant="h3" color={theme.palette.error.main}>
+          error
+        </Typography>
+        <Typography variant="h3" color={theme.palette.warning.main}>
+          warning
+        </Typography>
+        <Typography variant="h3" color={theme.palette.info.main}>
+          info
+        </Typography>
+      </Box>
       <Container>
         <ToDo />
       </Container>

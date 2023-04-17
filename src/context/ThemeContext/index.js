@@ -19,24 +19,27 @@ const ThemeProvider = (props) => {
     }
   };
 
-  const changecolor = (key, color) => {
+  const changecolor = (data, theme) => {
+    let palette = Object.keys(data).reduce((a, itemKey) => {
+      if (data[itemKey]) {
+        return { ...a, [itemKey]: { main: data[itemKey] } };
+      } else {
+        return { ...a, [itemKey]: { main: theme.palette[itemKey].main } };
+      }
+    }, {});
+
     setUserOptions(
-      deepmerge({...userOptions}, {
-        palette: {
-          [key]: {
-            main: color,
-          },
-        },
-      })
+      deepmerge(
+        { ...userOptions },
+        {
+          palette,
+        }
+      )
     );
   };
-  // const changeTheme = (userOptions) => {
-  //   localStorage.setItem("journalTheme", JSON.stringify(userOptions));
-  //   setCurrentTheme(createTheme(currentTheme,userOptions));
-  // };
+
 
   const state = {
-    // changeTheme,
     toggleMode,
     changecolor,
   };

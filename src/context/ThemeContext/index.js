@@ -1,7 +1,6 @@
 import { useState, createContext, useMemo } from "react";
 import { getTheme } from "context/ThemeContext/BaseTheme";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material";
 import { deepmerge } from "@mui/utils";
 
 export const ThemeContext = createContext();

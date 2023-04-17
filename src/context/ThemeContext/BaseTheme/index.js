@@ -3,7 +3,7 @@ import { palette } from "./palette";
 import { components } from "./components";
 import { typography } from "./typography";
 import { breakpoints } from "./breakpoints";
-import { shadows } from "./shadows";
+// import { shadows } from "./shadows";
 
 const initTheme = (mode, userOptions) => {
   console.log(userOptions);

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Container, Fab, Typography, useTheme, Box } from "@mui/material";
+import { Container, Fab, useTheme, Box } from "@mui/material";
 import ToDo from "views/todoList";
 import { BsSun, BsMoon, BsPalette } from "react-icons/all";
 import { ThemeContext } from "context/ThemeContext";
@@ -15,7 +15,7 @@ const Layout = () => {
   return (
     <>
       <Box>
-        <Fab onClick={() => setShow(true)}>
+        <Fab onClick={() => setShow(!showForm)}>
           <BsPalette />
         </Fab>
         <SideNote show={showForm} onClose={() => setShow(false)}>
@@ -25,23 +25,6 @@ const Layout = () => {
           </Fab>
           <PaletteForm />
         </SideNote>
-      </Box>
-      <Box sx={{pl:50}}>
-        <Typography variant="h3" color={theme.palette.primary.main}>
-          primary
-        </Typography>
-        <Typography variant="h3" color={theme.palette.secondary.main}>
-          secondary
-        </Typography>
-        <Typography variant="h3" color={theme.palette.error.main}>
-          error
-        </Typography>
-        <Typography variant="h3" color={theme.palette.warning.main}>
-          warning
-        </Typography>
-        <Typography variant="h3" color={theme.palette.info.main}>
-          info
-        </Typography>
       </Box>
       <Container>
         <ToDo />

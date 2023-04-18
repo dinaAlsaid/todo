@@ -5,11 +5,10 @@ import { styled } from "@mui/material/styles";
 import { Paper } from "@mui/material";
 
 const SideNoteContainer = styled(Paper)(({ theme }) => ({
-  position: "absolute",
+  position: "fixed",
   // left: "100%",
-  left:0,
+  right:0,
   transform: "rotate(-2deg)",
-  height: "30vw",
   width: "19vw",
   fontFamily: "ReenieBeanie",
   textTransform: "lowercase",

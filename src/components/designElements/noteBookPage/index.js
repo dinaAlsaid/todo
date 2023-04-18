@@ -1,16 +1,25 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import {  Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 const StyledPage = styled(Paper)(({ theme }) => ({
   transform: "rotate(1deg)",
-  borderRadius: "1px 3px 3px 0px",
-  height: "70vw",
-  width: "66vw",
+  borderRadius: "1px 4px 4px 0px",
+
+  [theme.breakpoints.up("xs")]: {
+    ...theme.components.PaperSize.portrait.A6,
+  },
+  [theme.breakpoints.up("sm")]: {
+    ...theme.components.PaperSize.portrait.A6,
+  },
+  [theme.breakpoints.up("md")]: {
+    ...theme.components.PaperSize.portrait.A4,
+  },
+
 }));
 
 export const NoteBookPage = ({ children }) => {
-  return <StyledPage >{children}</StyledPage>;
+  return <StyledPage>{children}</StyledPage>;
 };
 
 NoteBookPage.defaultProps = {

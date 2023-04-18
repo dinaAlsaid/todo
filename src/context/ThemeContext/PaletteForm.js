@@ -18,7 +18,7 @@ const PaletteForm = () => {
       component="form"
       onSubmit={RHF.handleSubmit(applyChanges)}
       display="flex"
-      sx={{ width: "400px", height: "200px", flexWrap: "wrap" }}
+      sx={{ flexWrap: "wrap" }}
     >
       {Object.keys(theme.palette).reduce((a, itemKey) => {
         if (typeof theme.palette[itemKey] == "object") {

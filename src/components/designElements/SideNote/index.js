@@ -6,14 +6,21 @@ import { Paper } from "@mui/material";
 
 const SideNoteContainer = styled(Paper)(({ theme }) => ({
   position: "fixed",
-  // left: "100%",
-  right:0,
+  right: 0,
   transform: "rotate(-2deg)",
-  width: "19vw",
   fontFamily: "ReenieBeanie",
   textTransform: "lowercase",
   fontSize: "x-large",
-  zIndex:1000
+  zIndex: theme.zIndex.modal,
+  [`${theme.breakpoints.up("xs")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
+  [`${theme.breakpoints.up("sm")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
+  [`${theme.breakpoints.up("md")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
 }));
 
 const SideNote = ({ children, show, onClose, style }) => {

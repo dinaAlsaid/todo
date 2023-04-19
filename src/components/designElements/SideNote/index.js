@@ -1,31 +1,41 @@
 import React from "react";
-import "./styles.scss";
-import {HiChevronLeft} from "react-icons/all"
+import { HiChevronLeft } from "react-icons/all";
 
-const SideNote = ({ children, show,onClose,style }) => {
-  const sideNotestyle = {
-    position: "absolute",
-    left: "100%",
-    transform: "rotate(-2deg)",
-    height: "30vw",
-    width: "19vw",
-    visibility:show?"visible":"hidden",//to load font 
-    ...style,
-  };
+import { styled } from "@mui/material/styles";
+import { Paper } from "@mui/material";
+
+const SideNoteContainer = styled(Paper)(({ theme }) => ({
+  position: "fixed",
+  right: 0,
+  transform: "rotate(-2deg)",
+  fontFamily: "ReenieBeanie",
+  textTransform: "lowercase",
+  fontSize: "x-large",
+  zIndex: theme.zIndex.modal,
+  [`${theme.breakpoints.up("xs")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
+  [`${theme.breakpoints.up("sm")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
+  [`${theme.breakpoints.up("md")} and (orientation:portrait)`]: {
+    maxWidth: theme.components.PaperSize.portrait.A6.width,
+  },
+}));
+
+const SideNote = ({ children, show, onClose, style }) => {
   return (
     <>
-      {/* {show && ( */}
-
-        <div className="paper side-note" style={sideNotestyle}>
-          <div onClick={onClose} className="hover-pointer bullet-icons"><HiChevronLeft/></div>
+      {show && (
+        <SideNoteContainer className="side-note">
+          <div onClick={onClose}>
+            <HiChevronLeft />
+          </div>
           {children}
-        </div>
-      {/* )} */}
+        </SideNoteContainer>
+      )}
     </>
   );
 };
 
 export default SideNote;
-SideNote.defaultProps={
-  style:{}
-}

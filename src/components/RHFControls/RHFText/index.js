@@ -1,8 +1,9 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { Row, Col } from "react-bootstrap";
+import { Box, Typography } from "@mui/material";
+import { InputUnstyled } from "@mui/base";
 
-const RHFText = ({ RHF, type, name, required, placeholder, rules,defaultValue }) => {
+const RHFText = ({ RHF, type, name, required, placeholder, rules, defaultValue }) => {
   return (
     <Controller
       control={RHF.control}
@@ -13,20 +14,14 @@ const RHFText = ({ RHF, type, name, required, placeholder, rules,defaultValue })
       }}
       render={({ field, fieldState: { error } }) => (
         <>
-          <Col md="auto">
-            <Row>
-              <input 
-              type={type} 
-              defaultValue={defaultValue} 
-              autoComplete="off" 
-              placeholder={placeholder} 
-              {...field} 
-              />
-            </Row>
-            <Row>
-              <span className="text-danger small">{error?.message}</span>
-            </Row>
-          </Col>
+          <InputUnstyled
+            type={type}
+            defaultValue={defaultValue}
+            autoComplete="off"
+            placeholder={placeholder}
+            {...field}
+          />
+          <Box><Typography>{error?.message}</Typography></Box>
         </>
       )}
     />
@@ -36,7 +31,7 @@ const RHFText = ({ RHF, type, name, required, placeholder, rules,defaultValue })
 RHFText.defaultProps = {
   type: "text",
   required: false,
-  defaultValue:""
+  defaultValue: "",
 };
 
 export default RHFText;

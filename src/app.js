@@ -2,12 +2,14 @@ import React from "react";
 import { Routes, Route } from "react-router";
 
 import SettingsProvider from "context/settings.js";
+import ThemeProvider from "context/ThemeContext";
+
 import Layout from "components/Layout";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "app.scss";
+import { CssBaseline } from "@mui/material";
 
-export default function App() {
+const App = () => {
   return (
     <>
       {/* <Helmet>
@@ -21,11 +23,15 @@ export default function App() {
       </Helmet> */}
 
       <SettingsProvider>
-        <Routes>
-          <Route path="/" element={<Layout />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-        </Routes>
+        <ThemeProvider>
+          <CssBaseline/>
+          <Routes>
+            <Route path="/" element={<Layout />} />
+            {/* <Route path="/login" element={<Login />} /> */}
+          </Routes>
+        </ThemeProvider>
       </SettingsProvider>
     </>
   );
-}
+};
+export default App;

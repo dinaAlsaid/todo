@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container } from "@mui/material";
 import SideNote from "components/designElements/SideNote/index";
 import SettingsForm from "./form";
 

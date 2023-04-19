@@ -16,7 +16,7 @@
 }
 
 @font-face {
-    font-family: "little sunshine";
+    font-family: "littleSunshine";
     src: url("./assets/fonts/a_little_sunshine/little_sunshine.woff2");
 }
 
@@ -32,14 +32,3 @@
     --paper-shadow: var(--subtle-box-shadow); /*,,-10px -10px 31px 0px rgba(183 ,183 ,183 , 5%) inset*/
 
 }  
-
-.hover-pointer{
-    &:hover {
-        cursor: pointer;
-      }
-  
-}
-
-.list-style-type-none{
-    list-style-type: none;
-}

@@ -14,6 +14,7 @@ import { TodoListContainer } from "components/designElements/TodoListContainer/i
 import "components/designElements/commonStyles.scss";
 import { useStorage } from "hooks/useStorage.js";
 import { useFilter } from "hooks/useFilter.js";
+// import { useTheme } from "@mui/material";
 
 const ToDo = () => {
   const [showSettings, setShowSettings] = useState(false);
@@ -22,6 +23,7 @@ const ToDo = () => {
   const { _addItem, _getTodoItems, _toggleComplete, _deleteItem, data } = useStorage(false);
   const {FilteredData} = useFilter(data);
 
+  // const theme=useTheme()
   useEffect(() => {
     const getAllItems = async () => {
       await _getTodoItems();
@@ -67,6 +69,13 @@ const ToDo = () => {
           <Grid item>
             <Grid item>
               <PageTitle title="Todo List" />
+              {/* <Typography color="primary">primary</Typography>
+              <Typography color="secondary">secondary</Typography>
+              <Typography color="error"> error</Typography>
+              <Typography color={theme.palette.warning.main}>warning</Typography>
+              <Typography color={theme.palette.info.main}>info</Typography>
+              <Typography color={theme.palette.success.main}>success</Typography> */}
+
             </Grid>
           </Grid>
           <Grid item>

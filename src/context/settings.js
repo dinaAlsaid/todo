@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState,createContext } from 'react';
 
-export const SettingsContext = React.createContext();
+export const SettingsContext = createContext();
 
 function SettingsProvider(props) {
 
   const [showCompleted, setShowCompleted] = useState(false);
-  const [sorted, setSorted] = useState('None');
+  const [sorted, setSorted] = useState(0);
   const [numberOfItems, setNumber] = useState(3);
   
   const state = {
@@ -19,7 +19,7 @@ function SettingsProvider(props) {
       setShowCompleted(!showCompleted);
     },
     sortBy: (e) => {
-      setSorted(e.target.value);
+      setSorted(Number(e.target.value));
     },
   };
 

@@ -1,5 +1,8 @@
 import  { useState } from 'react';
-
+/**
+ * NOT USED ANYWHERE
+ * 
+ */
 const useFormHandler = ()=>{
   const [formData, setFormData] = useState({});
 

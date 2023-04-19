@@ -1,15 +1,23 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
 import { BsCircle, BsCircleFill, BsCircleHalf } from "react-icons/all";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListItemAvatar,
+  Typography,
+  Box,
+  IconButton,
+} from "@mui/material";
 
 export const TodoListItem = ({ icon, item, note, actionButton, status, handleStatus, handleAction }) => {
   const getStatusIcon = (status) => {
     switch (status) {
-      case true:
+      case "done":
         return <BsCircleFill />;
-      case "inProgress":
+      case "doing":
         return <BsCircleHalf />;
-      case false:
+      case "todo":
         return <BsCircle />;
       default:
         return <></>;
@@ -17,18 +25,20 @@ export const TodoListItem = ({ icon, item, note, actionButton, status, handleSta
   };
 
   return (
-    <li>
-      <Row>
-        <Col sm={1} md={1}>
-          {icon}
-        </Col>
-        <Col className="hover-pointer" onClick={handleStatus}>
-          <span className="bullet-icons small m-2">{getStatusIcon(status)}</span>
-          <span className="task">{item}</span>
-          <li className="note">{note}</li>
-        </Col>
-        <Col sm={1} md={1} onClick={handleAction}>{actionButton}</Col>
-      </Row>
-    </li>
+    <ListItem disablePadding secondaryAction={<IconButton onClick={handleAction}>{actionButton}</IconButton>}>
+      <ListItemButton onClick={handleStatus}>
+      <ListItemAvatar>{icon}</ListItemAvatar>
+        <ListItemIcon>{getStatusIcon(status)}</ListItemIcon>
+        <ListItemText
+          secondary={
+            <Box>
+              <Typography variant="handwritten">{note}</Typography>
+            </Box>
+          }
+        >
+          <Typography variant="handwritten">{item}</Typography>
+        </ListItemText>
+      </ListItemButton>
+    </ListItem>
   );
 };

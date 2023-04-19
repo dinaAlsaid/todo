@@ -12,13 +12,13 @@ const SideNoteContainer = styled(Paper)(({ theme }) => ({
   textTransform: "lowercase",
   fontSize: "x-large",
   zIndex: theme.zIndex.modal,
-  [`${theme.breakpoints.up("xs")} and (orientation:portrait)`]: {
+  [`${theme.breakpoints.up("xs")} `]: {
     maxWidth: theme.components.PaperSize.portrait.A6.width,
   },
-  [`${theme.breakpoints.up("sm")} and (orientation:portrait)`]: {
+  [`${theme.breakpoints.up("sm")} `]: {
     maxWidth: theme.components.PaperSize.portrait.A6.width,
   },
-  [`${theme.breakpoints.up("md")} and (orientation:portrait)`]: {
+  [`${theme.breakpoints.up("md")} `]: {
     maxWidth: theme.components.PaperSize.portrait.A6.width,
   },
 }));
